@@ -16,9 +16,9 @@
             {{__('front.Fourth quarter report')}}
             @endif
               {{\Carbon\Carbon::parse($file->created_at)->translatedFormat('Y')}} --}}
-              {{$file->file_name}}
+              {{str_replace(".pdf", "", $file->file_name)}}
         </p>
-        <p class="cs-activity_posted_by text-dark">{{\Carbon\Carbon::parse($file->created_at)->translatedFormat('d F Y h:i a')}}</p>
+        <!--<p class="cs-activity_posted_by text-dark">{{\Carbon\Carbon::parse($file->created_at)->translatedFormat('d F Y h:i a')}}</p>-->
         </div>
         <div class="cs-activity_icon cs-center cs-white_bg cs-accent_color">
             <i class="fa-solid fa-file-arrow-down fa-2x cs-accent_color"></i>

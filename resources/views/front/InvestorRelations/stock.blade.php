@@ -42,7 +42,8 @@
 
   <section>
     <div class="container">
-      <div class="cs-cta cs-style2 text-center cs-accent_bg">
+     <div class="cs-cta cs-style2 text-center cs-shape_accent_bg">
+        <div class="cs-height_30 cs-height_lg_50 d-block d-xl-none"></div>
         <h2 class="cs-cta_title cs-white_color_8">{{ __('front.You can view the full stock information under the link below.') }}</h2>
         <a href="{{ $data->link }}" target="_blank" class="cs-btn cs-style1 cs-btn_lg cs-color2"><span>{{__('front.BPC stock info')}}</span></a>
       </div>

@@ -21,7 +21,16 @@
     </head>
 
     <body>
-    @include('front.includes.preload')
+  
+    @if(request()->is('/'))
+      <div class="cs-preloader cs-center">
+       <img src="assets/img/bpc-just50.svg" width="50%" alt="Birzeit Pharmaceutical Company" class="img-fluid z-3 position-relative">
+      </div>
+
+   @else
+     @include('front.includes.preload')
+   @endif
+
 
     <!-- Start Header Section -->
     @include('front.includes.header')

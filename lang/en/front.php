@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'about' => 'about' ,
-    'home' => 'home',
+    'about' => 'About' ,
+    'home' => 'Home',
     'Categories' => 'Categories' ,
     'board of directors' => 'Board of Directors' ,
     'executive management' => 'Executive Management',
@@ -65,7 +65,7 @@ return [
     'Subscribe' => 'Subscribe',
     'Stock' => 'Stock',
     'Facebook Posts' => 'Facebook Posts',
-    'Developed  by' => 'Developed  by',
+    'Developed  by' => 'Powered  by',
     'About' => 'About',
     'Terms and Conditions' => 'Terms and Conditions',
     'Privacy Policy' => 'Privacy Policy',
@@ -213,7 +213,7 @@ return [
     'Executive Management' => 'Executive Management',
     'Code of conduct' => 'Code of conduct',
     'Card Number ID/Passport/Personal' => 'Card Number ID/Passport/Personal',
-    'Developed by ' => 'Developed by ',
+    'Developed by ' => 'Powered by ',
     'All' => 'All',
 
     'title-newsrom' => 'newsrom',

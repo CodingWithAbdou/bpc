@@ -26,7 +26,7 @@
                         <img src=" {{asset($member->image)}} " class="rounded-circle w-50" alt="Team Member">
                     </a>
                     <a href="{{ route('members.show' ,  $member) }}"><h3 class="mb-0">{{$member->name}}</h3></a>
-                    <span>{{ Str::limit( $member->description?? '', 90, '...') }}</span>
+                    <span>{{ Str::limit( strip_tags($member->description)?? '', 90, '...') }}</span>
                 </div>
             </div>
             @endforeach

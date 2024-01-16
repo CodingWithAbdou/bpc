@@ -1,4 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
 
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ThemeMarch">
+  <!-- Site Title -->
+  <title>Birzeit Pharmaceutical Company</title>
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/plugins/slick.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+
+<body>
+
+  <div class="cs-preloader cs-center">
+    <div class="cs-preloader_in"></div>
+    <span>Birzeit<br>Pharmaceutical Company</span>
+  </div>
+
+  <!-- Start Header Section -->
+  
 <header class="cs-site_header cs-style1 cs-sticky-header cs-white_bg">
     <div class="cs-main_header">
       <div class="container-fluid">
@@ -20,12 +46,12 @@
 
             <div class="lang_front px-2">
                 @if(app()->getLocale() == 'ar')
-                <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px text-dark"
+                <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                 href="{{route('lang.switchLang', 'en')}}">EN
                 </a>
             @else
-                <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px text-dark"
-                href="{{route('lang.switchLang', 'ar')}}">العربية
+                <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
+                href="{{route('lang.switchLang', 'ar')}}">AR
                 </a>
             @endif
             </div>
@@ -67,11 +93,10 @@
                       <li class="menu-item-has-children">
                         <a href="javascript:void(0);">{{__('front.Investor Relations')}}</a>
                         <ul>
-                              <li><a href="{{ route('governance.index') }}">{{__('front.Governance')}}</a></li>
                           <li><a href="{{ route('stock-price.index') }}">{{__('front.Stock information')}}</a></li>
                           <li><a href="{{ route('investor-services.index') }}">{{__('front.Investor services')}}</a></li>
                           <li><a href="{{ route('financial-report.index') }}">{{__('front.Financial Reports')}}</a></li>
-                        
+                          <li><a href="{{ route('governance.index') }}">{{__('front.Governance')}}</a></li>
                         </ul>
                       </li>
                       <li><a href="{{ route('contact.index') }}">{{__('front.Contact')}}</a></li>
@@ -80,7 +105,7 @@
                 </div>
               </div>
             </div>
-            <div class="cs-header_btns_wrap  d-none d-md-block">
+            <div class="cs-header_btns_wrap">
               <div class="cs-header_btns">
                 <div class="btn cs-center cs-mobile_search_toggle">
                   <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,3 +136,114 @@
       </div>
     </div>
   </header>
+
+  <!-- End Header Section -->
+
+  <div class="cs-height_90 cs-height_lg_80"></div>
+
+  <!-- Start Page Head -->
+  <section class="cs-page_head-v2 cs-center">
+    <img src="assets/img/bpc-just50.svg" width="50%" alt="Birzeit Pharmaceutical Company" class="img-fluid z-3 position-relative">
+
+  </section>
+  <!-- End Page Head -->
+  <div class="cs-height_60 cs-height_lg_40"></div>
+
+  <section>
+    <div class="container-lg">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="cs-cta_title wow  animate__animated animate__fadeInUp">Welcome to BPC’s <span class="cs-accent_color">50th</span> Anniversary Celebrations!</h2>
+        
+        </div>
+        <div class="col-lg-6">
+
+          <div class="cs-contact_card_wrap lh-lg text-dark rounded-lg p-5">
+            <p class=" wow animate__animated animate__fadeInUp">
+              Birzeit Pharmaceutical Company is a truly national enterprise, firmly rooted in Ramallah, Palestine, and stands as one of the leading companies in the region. BPC proudly maintains a diverse portfolio of 270 pharmaceutical products, a testament to our unwavering commitment to excellence.
+            </p>                        
+          </div> 
+
+        
+        </div>
+        <div class="col-lg-6">
+
+          <div class="cs-contact_card_wrap lh-lg text-dark rounded-lg p-5">
+            <p class=" wow animate__animated animate__fadeInUp">
+              This year marks a significant milestone as we celebrate our 50th anniversary. BPC is founded on a set of core values that not only shape our identity but also guide our actions. Each product we manufacture reflects our dedication to excellence, trust, professionalism, efficiency, a sense of belonging, and cooperation at every stage. Thanks to the support of our leaders, investors, employees, and customers, we have illuminated our path toward this remarkable 50-year anniversary. 
+            </p>                        
+          </div>
+          <!--<div class="cs-height_50 cs-height_lg_50"></div>-->
+         <!-- <div class="cs-height_50 cs-height_lg_50"></div>-->
+         <!--<div class="cs-height_50 cs-height_lg_50"></div>-->
+
+
+        
+        </div>
+      </div>
+    </div>
+    
+        <div class="cs-height_60 cs-height_lg_40"></div>
+
+    <div class="bg-multicolor"></div>
+    <!--<div class="cs-height_40 cs-height_lg_40"></div>-->
+    
+  </section>
+
+
+  <!--<div class="cs-height_60 cs-height_lg_40"></div>-->
+
+   <!-- Start Footer -->
+   
+    @include('front.includes.footer')
+    <!-- End Footer -->
+
+    <!-- Start Video Popup -->
+    @include('front.includes.videoPopup')
+    <!-- End Video Popup -->
+
+    @vite(['resources/js/app.js'])
+
+    <!-- Script -->
+    <script src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+    <script src="{{ asset('assets/js/plugins/isotope.pkg.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.slick.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        wow = new WOW(
+        {
+            animateClass: 'animated',
+            offset: 100
+        }
+        );
+        wow.init();
+
+        $( document ).ready(function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        });
+
+    </script>
+
+    @stack('script')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const SwalModal = (text ,type ,url) => {
+            swal.fire({
+                text: text,
+                icon: type,
+                confirmButtonText: '{{__('front.Ok got it')}}',
+                confirmButtonColor: '#01acab',
+            }).then(function (){
+                if (url)
+                    window.location = url;
+            });
+        };
+    </script>
+</body>
+</html>

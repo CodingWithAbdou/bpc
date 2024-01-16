@@ -29,7 +29,7 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                     <tr>
-                        <td>{{@isset($data)$data->{'message_' . getLocale() }   }}</td>
+                        <td>{{$data->{'message_' . getLocale() } }}</td>
                         <td>{{$data->created_at}}</td>
                         <x-action-btn.news-letter :record="$data"/>
                     </tr>

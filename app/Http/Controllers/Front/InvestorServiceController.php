@@ -35,7 +35,7 @@ class InvestorServiceController extends Controller
         $data = InvestorService::create($inputs);
 
 
-        $to = 'info@bpc.com';
+        $to = 'shareholders@bpc.ps';
         $from = [
             'email' => config('mail.from.address'),
             'name' => config('mail.from.name'),

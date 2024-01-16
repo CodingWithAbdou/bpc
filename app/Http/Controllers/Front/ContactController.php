@@ -32,6 +32,7 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        // dd( $request);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email:rfc,dns',

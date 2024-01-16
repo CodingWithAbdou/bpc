@@ -20,6 +20,7 @@ use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\ResponsibilityController;
 use App\Http\Controllers\Front\SitemapController;
+use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\SliderController;
 use App\Http\Controllers\Front\StockPriceController;
 use Illuminate\Support\Facades\Route;
@@ -96,4 +97,7 @@ Route::post('/career/{obj}/store', [CareerController::class , 'store'] )->name('
 
 
 Route::get('sitemap', [SitemapController::class , 'index'] )->name('sitemap.index');
+
+// landing page
+Route::get('landing', [LandingController::class , 'index'] )->name('landing.index');
 

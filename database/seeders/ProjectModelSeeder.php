@@ -56,6 +56,7 @@ class ProjectModelSeeder extends Seeder
             "is_menu" => '1' ,
             "icon" =>  'fas fa-file-alt' ,
             "order_by" => '2'
+
         ]);
         ProjectModel::create([
             'parent_id' => '4',

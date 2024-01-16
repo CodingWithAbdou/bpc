@@ -66,7 +66,7 @@
 
           <div class="card rounded-lg cs-box_shadow  wow  animate__animated animate__fadeInRight">
 
-            <img class=" rounded-lg" width="auto" height="300px" src="{{ asset('assets/img/board/Board-Of-Direcors') }}-picture-1.webp">
+            <img class=" rounded-lg" width="auto" height="300px" src="{{ asset($section_two->image) }}">
 
           </div>
         </div>

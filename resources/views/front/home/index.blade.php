@@ -10,8 +10,8 @@
     <div class="cs-height_70 cs-height_lg_70"></div>
 
     <div class="wow  animate__animated animate__fadeInLeft">
-      <div class="cs-hero_slider_1">
-        <div class="cs-slider position-relative cs-style1">
+      <div class="cs-hero_slider_1 z-1">
+        <div class="cs-slider position-relative cs-style1 z-1">
           <div class="cs-slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-slides-per-view="1">
             <div class="cs-slider_wrapper">
 
@@ -22,11 +22,11 @@
 
                       <div class="col-11 col-md-9 col-lg-6 mb-3 px-5">
                         <div class="cs-hero_text">
-                          <h2 class="cs-hero_title mt-5 mt-xl-0 ">
+                          <h2 class="cs-hero_subtitle mt-5 mt-xl-0 ">
                               {!! $slider->title  !!}
                           </h2>
-                          <div class="cs-hero_subtitle cs-medium d-none d-md-block text-secondary">
-                              {!! Str::limit( $slider->description?? '', 90, '...')  !!}
+                          <div class="cs-hero_subtitle cs-medium d-none d-md-block text-dark">
+                              {!! Str::limit( $slider->description?? '', 150, '...')  !!}
                           </div>
                           <div class="cs-hero_btns mb-sm-0 mb-lg-5 mt-xl-0">
                             <a href="{{ route('slider.show' , $slider->id) }}" class="cs-hero_btn cs-style1 cs-color3"><span>{{ __('front.Read More')}}</span></a>
@@ -54,15 +54,19 @@
     <div class="container-lg">
       <div class="cs-height_30 cs-height_lg_30"></div>
       <div class="row">
-        <div class="col-lg-5 offset-lg-1 text-center text-lg-end" style="text-align: start !important;">
+        <div class="col-lg-5 offset-lg-1 text-center text-lg-end" style="
+        {{getLocale() == 'ar' ?
+        'text-align: start !important;margin-inline-end:8.33%;margin-right: 0%':''}}">
           <h2 class="cs-section_title">{{ $experience->title }}</h2>
-          <p class="text-dark">{!! $experience->description !!}</p>
+          <p class="text-dark">{{ strip_tags($experience->description )}}</p>
           <a href="{{route('about.index')}}" class="cs-btn cs-style1"><span>{{ __('front.Learn More') }}</span></a>
-
+          <div class="cs-height_30 cs-height_lg_30"></div>
         </div>
         <div class="col-lg-6 text-center position-relative">
           <img src='{{ asset("$experience->image_one") }}' class="img-fluid rounded-lg" alt="...">
-          <img src="{{ asset("$experience->image_two") }}" class="position-absolute top-50 start-50 w-75 border-5 border border-color-3 rounded-lg" alt="..." style="{{getLocale() == 'ar' ? 'left: 50%;right: auto!important' : ''}}">
+          <img src="{{ asset("$experience->image_two") }}" class="
+          {{getLocale() == 'ar' ? 'position-absolute top-50 end-0 w-75 border-5 border border-color-3 rounded-lg' : 'position-absolute top-50 start-50 w-75 border-5 border border-color-3 rounded-lg' }}
+           alt="...">
         </div>
       </div>
 
@@ -76,7 +80,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2 class="cs-section_title">{{ $product_info->title }}</h2>
-          <p class="text-dark">{{  $product_info->description  }}</p>
+          <p class="text-dark">{{ strip_tags($product_info->description)  }}</p>
         </div>
         <div class="cs-height_80 cs-height_lg_80"></div>
 
@@ -84,13 +88,23 @@
       <div class="row">
 
         @foreach ($production_types as $production_type)
-        <div class="col-lg-4 col-md-6 mb-5 mt-5 mt-lg-0">
+        <div class="col-lg-4 col-md-12 mb-5 mt-5 mt-lg-0">
 
-          <div class="card h-100 p-2 border-0 cs-box_shadow rounded-lg  animate__animated animate__fadeInLeft">
+          <div class=
+          "{{$production_type->id == 1?
+          "card h-100 bg-info p-2 border-0 cs-box_shadow rounded-lg  animate__animated animate__fadeInLeft" : 
+         ( $production_type->id == 2?
+          "card h-100 bg-success p-2 border-0 cs-box_shadow rounded-lg  animate__animated animate__fadeInLeft" :
+          
+          "card h-100 bg-purplle p-2 border-0 cs-box_shadow rounded-lg  animate__animated animate__fadeInLeft" )
+          
+          }} "
+          
+          >
             <div class="col-12 card-services-img position-relative cs-center">
               <img src="{{ asset("$production_type->icone") }}" alt="...">
             </div>
-            <h5 class="text-center mt-3">{{ $production_type->name }}</h5>
+            <a href="{{route('products.index' , $production_type->title)}}" class="text-center mt-3 text-white">{{ $production_type->name }}</a>
           </div>
         </div>
         @endforeach
@@ -169,7 +183,7 @@
                 <div class="cs-post_avatar">
                   <div class="cs-post_avatar_right">
                     <div class="cs-post_meta">
-                      <span class="cs-post_meta_item"><i class="fa-solid fa-clock cs-accent_color"></i>{{\Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y')}}</span>
+                      <span class="cs-post_meta_item"><i class="fa-solid fa-clock cs-accent_color"></i>     {{\Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y')}}</span>
                     </div>
                   </div>
                 </div>

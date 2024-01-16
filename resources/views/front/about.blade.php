@@ -130,4 +130,7 @@
       </div>
     </div>
   </section>
+   <div class="cs-height_100 cs-height_lg_100 d-none d-md-block d-lg-none"></div>
+  <div class="cs-height_100 cs-height_lg_100 d-block d-xl-none"></div>
+  <div class="cs-height_100 cs-height_lg_100 d-block d-xl-none"></div>
 @endsection

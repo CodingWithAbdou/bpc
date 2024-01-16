@@ -55,7 +55,7 @@
               </div>
             </div><!-- .col -->
             <div class="col-lg-6 col-sm-3">
-                <img src="{{ asset('assets/img/logo-50years.webp') }}" class="bpc-50" height="190px" width="auto">
+               <a href="{{ route('landing.index') }}"> <img src="{{ asset('assets/img/bpc-50.svg') }}" class="bpc-50" height="190px" width="auto"></a>
 
             </div><!-- .col -->
 

@@ -21,8 +21,6 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-{{--                <x-table.export />--}}
-{{--                <x-table.create />--}}
             </div>
         </div>
         <div class="card-body pt-0">
@@ -37,36 +35,72 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
 
-                @foreach($data as $record)
-                    <tr>
-                        <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
-                        <td>
-                            @if($model->route_key == 'pageAbout')
-                            {{$record->subtitle . " " .$record->title }}
-                            @else
-                            {{$record->title}}
-                            @endif
-
-                        </td>
-                        <td>{{$record->created_at}}</td>
-                        @php
-                        if($record->section_key == 'stok-price')
-                        {
-                            $actionComponentName = 'action-btn.stok-price';
-                        }
-                        else if($record->section_key == 'investor-services')
-                        {
-                            $actionComponentName = 'action-btn.page-investor-services';
-                        }
-                        elseif($record->section_key == 'financial-reports') {
-                            $actionComponentName = 'action-btn.financial-reports';
-                        }
-                        else {
-                            $actionComponentName = 'action-btn.governance' ;
-                        }
-                        @endphp
-                        <x-dynamic-component :component="$actionComponentName" :record="$record"/>
-                    </tr>
+                    @foreach($data as $record)
+                    @if($record->section_key == 'stok-price')
+                        @can('admin.stok-price.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    @if($model->route_key == 'pageAbout')
+                                    {{$record->subtitle . " " .$record->title }}
+                                    @else
+                                    {{$record->title}}
+                                    @endif
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.stok-price';@endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'investor-services')
+                        @can('admin.page-investor-services.view')
+                        <tr>
+                            <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                            <td>
+                                @if($model->route_key == 'pageAbout')
+                                {{$record->subtitle . " " .$record->title }}
+                                @else
+                                {{$record->title}}
+                                @endif
+                            </td>
+                            <td>{{$record->created_at}}</td>
+                            @php $actionComponentName = 'action-btn.page-investor-services';@endphp
+                            <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                        </tr>
+                        @endcan
+                    @elseif($record->section_key == 'financial-reports')
+                        @can('admin.financial-reports.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    @if($model->route_key == 'pageAbout')
+                                    {{$record->subtitle . " " .$record->title }}
+                                    @else
+                                    {{$record->title}}
+                                    @endif
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.financial-reports';@endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @else
+                        @can('admin.governance.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    @if($model->route_key == 'pageAbout')
+                                    {{$record->subtitle . " " .$record->title }}
+                                    @else
+                                    {{$record->title}}
+                                    @endif
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.governance';@endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @endif
                 @endforeach
 
                 </tbody>

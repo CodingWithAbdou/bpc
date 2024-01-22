@@ -33,7 +33,7 @@
 
                 @foreach($parent_models as $item)
                     @if(count($item->SubModel) == 0)
-                        {{-- @can('admin.'.$item->route_key.'.view') --}}
+                        @can('admin.'.$item->route_key.'.view')
                             <?php $url = 'dashboard.'.$item->route_key.'.index' ?>
                             <div class="menu-item">
                                 <a class="menu-link {{Route::is($url)?'active':''}}" href="{{route($url)}}">
@@ -45,13 +45,13 @@
                                     <span class="menu-title">{{$item->{'title_'.app()->getLocale()} }}</span>
                                 </a>
                             </div>
-                        {{-- @endcan --}}
+                        @endcan
                     @else
                         <?php $subCount = 0 ?>
                         @foreach($item->SubModel->where('is_menu', 1) as $subItem)
-                            {{-- @can('admin.'.$subItem->route_key.'.view') --}}
+                            @can('admin.'.$subItem->route_key.'.view')
                                 <?php $subCount++ ?>
-                            {{-- @endcan --}}
+                            @endcan
                         @endforeach
                         @if($subCount > 0)
                             <div data-kt-menu-trigger="click" class="menu-item
@@ -70,7 +70,7 @@
 
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
                                     @foreach($item->SubModel->where('is_menu', 1) as $subItem)
-                                        {{-- @can('admin.'.$subItem->route_key.'.view') --}}
+                                        @can('admin.'.$subItem->route_key.'.view')
                                             <?php $url = 'dashboard.'.$subItem->route_key.'.index' ?>
                                             <div class="menu-item">
                                                 <a class="menu-link {{str_contains(Route::currentRouteName(), $subItem->route_key)?'active':''}}" href="{{route($url)}}">
@@ -80,7 +80,7 @@
                                                     <span class="menu-title">{{$subItem->{'title_'.app()->getLocale()} }}</span>
                                                 </a>
                                             </div>
-                                        {{-- @endcan --}}
+                                        @endcan
                                     @endforeach
                                 </div>
                             </div>

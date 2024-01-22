@@ -22,7 +22,9 @@
             </div>
             <div class="card-toolbar">
                 <x-table.export />
+                @can('admin.users.add')
                 <x-table.create />
+                @endcan
             </div>
         </div>
         <div class="card-body pt-0">
@@ -49,8 +51,8 @@
                                 </div>
                             </div>
                         </td>
-                        {{-- <td><div class="badge badge-light-success">{{$record->Role?$record->Role->name:''}}</div></td> --}}
-                        <td><div class="badge badge-light-success">Admin</div></td>
+                        <td><div class="badge badge-light-success">{{$record->Role?$record->Role->name:''}}</div></td>
+                        {{-- <td><div class="badge badge-light-success">Admin</div></td> --}}
                         <td>{{$record->created_at}}</td>
                         <x-action-btn.users :record="$record"/>
                     </tr>

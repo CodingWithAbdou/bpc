@@ -1,5 +1,5 @@
 <td>
-    {{-- @can('admin.sliders.edit') --}}
+    @can('admin.sliders.edit')
         <a href="{{route('dashboard.sliders.edit' , $record)}}"
            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1"
            data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.edit')}}">
@@ -10,8 +10,8 @@
                 </svg>
             </span>
         </a>
-    {{-- @endcan --}}
-        {{-- @can('admin.news.delete') --}}
+    @endcan
+        @can('admin.news.delete')
         <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="{{route('dashboard.sliders.destroy', $record)}}"
             data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.delete')}}">
             <span class="text">
@@ -25,7 +25,7 @@
             </span>
             <span class="btn-loader d-none"><i class="fas fa-circle-notch fa-spin p-0"></i></span>
         </a>
-    {{-- @endcan  --}}
+    @endcan
 
 </td>
 

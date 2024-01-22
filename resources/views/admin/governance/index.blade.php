@@ -21,8 +21,6 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-{{--                <x-table.export />--}}
-{{--                <x-table.create />--}}
             </div>
         </div>
         <div class="card-body pt-0">
@@ -38,40 +36,73 @@
                 <tbody class="fw-bold text-gray-800">
 
                 @foreach($data as $record)
-                    <tr>
-                        <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
-                        <td>
-                            @if($model->route_key == 'pageAbout')
-                            {{$record->subtitle . " " .$record->title }}
-                            @else
-                            {{$record->title}}
-                            @endif
+                    @if($record->section_key == 'board-of-directors')
+                        @can('admin.page-board-of-directors.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.page-board-of-directors';@endphp
+                                <x-action-btn.governance-genereal :record="$record"/>
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'committees')
+                        @can('admin.page-committees.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.page-committees';@endphp
+                                <x-action-btn.governance-genereal :record="$record"/>
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'executive-management')
+                        @can('admin.executive-management.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.page-executive-management';@endphp
+                                <x-action-btn.governance-genereal :record="$record"/>
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'code-of-conduct')
+                        @can('admin.page-code-of-conduct.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.page-code-of-conduct';@endphp
+                                <x-action-btn.governance-genereal :record="$record"/>
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @else
+                        @can("admin.page-general-assembly-meeting.view")
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.page-general-assembly-meeting';@endphp
+                                <x-action-btn.governance-genereal :record="$record"/>
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @endif
 
-                        </td>
-                        <td>{{$record->created_at}}</td>
-                        @php
-                        if($record->section_key == 'board-of-directors')
-                        {
-                            $actionComponentName = 'action-btn.page-board-of-directors';
-                        }
-                        else if($record->section_key == 'committees')
-                        {
-                            $actionComponentName = 'action-btn.page-committees';
-                        }
-                        elseif($record->section_key == 'executive-management') {
-                            $actionComponentName = 'action-btn.page-executive-management';
-                        }
-                        elseif($record->section_key == 'code-of-conduct') {
-                            $actionComponentName = 'action-btn.page-code-of-conduct';
-                        }
-                        else {
-                            // /change
-                            $actionComponentName = 'action-btn.page-general-assembly-meeting' ;
-                        }
-                        @endphp
-                        <x-action-btn.governance-genereal :record="$record"/>
-                        <x-dynamic-component :component="$actionComponentName" :record="$record"/>
-                    </tr>
                 @endforeach
 
                 </tbody>

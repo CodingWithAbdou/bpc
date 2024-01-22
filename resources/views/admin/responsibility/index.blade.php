@@ -33,23 +33,42 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                 @foreach($data as $record)
-                    <tr>
-                        <td>
-                            @if($record->image_one)
-                            <div class="symbol symbol-50px bg-dark p-3"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div></td>
-                            @endif
-                        <td>{{$record->title}}</td>
-                        <td>{{$record->created_at}}</td>
-                         @if($record->section_key == 'social_responsibility' )
-                        <x-action-btn.responsibility :record="$record"/>
+                @if($record->section_key == 'environment' )
+                @can('admin.environment.view')
+                <tr>
+                    <td>
+                        @if($record->image_one)
+                        <div class="symbol symbol-50px bg-dark p-3"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div></td>
                         @endif
-                        @if($record->section_key == 'environment' )
-                        <x-action-btn.environment :record="$record"/>
+                    <td>{{$record->title}}</td>
+                    <td>{{$record->created_at}}</td>
+                    <x-action-btn.environment :record="$record"/>
+                </tr>
+                @endcan
+                @elseif($record->section_key == 'community')
+                @can('admin.community.view')
+                <tr>
+                    <td>
+                        @if($record->image_one)
+                        <div class="symbol symbol-50px bg-dark p-3"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div></td>
                         @endif
-                        @if($record->section_key == 'community' )
-                        <x-action-btn.community :record="$record"/>
+                    <td>{{$record->title}}</td>
+                    <td>{{$record->created_at}}</td>
+                    <x-action-btn.community :record="$record"/>
+                </tr>
+                @endcan
+                @else
+                <tr>
+                    <td>
+                        @if($record->image_one)
+                        <div class="symbol symbol-50px bg-dark p-3"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div></td>
                         @endif
-                    </tr>
+                    <td>{{$record->title}}</td>
+                    <td>{{$record->created_at}}</td>
+                    <x-action-btn.responsibility :record="$record"/>
+                </tr>
+                @endif
+
                 @endforeach
                 </tbody>
             </table>

@@ -1,5 +1,5 @@
 <td>
-    {{-- @can('admin.features.index') --}}
+    @can('admin.page-contact.edit')
         <a href="{{route('dashboard.page-contact.edit')}}"
            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1"
            data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.edit')}}">
@@ -10,6 +10,6 @@
                 </svg>
             </span>
         </a>
-    {{-- @endcan --}}
+    @endcan
 
 </td>

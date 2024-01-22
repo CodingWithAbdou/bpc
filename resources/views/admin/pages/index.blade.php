@@ -37,6 +37,50 @@
                 <tbody class="fw-bold text-gray-800">
 
                 @foreach($data as $record)
+                    @if($record->section_key == 'sliders' )
+                        @can('admin.sliders.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->description}}</td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.' . 'sliders';@endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'news')
+                        @can('admin.articles.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->description}}</td>
+                                <td>{{$record->created_at}}</td>
+                                @php
+                                    $actionComponentName = 'action-btn.' . 'news';
+                                @endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @elseif($record->section_key == 'other')
+                        @can('admin.other-page.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->description}}</td>
+                                <td>{{$record->created_at}}</td>
+                                @php
+                                    $actionComponentName = 'action-btn.' . 'page-other';
+                                @endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @else
                     <tr>
                         <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
                         <td>
@@ -60,6 +104,7 @@
                         @endphp
                         <x-dynamic-component :component="$actionComponentName" :record="$record"/>
                     </tr>
+                    @endif
                 @endforeach
 
                 </tbody>

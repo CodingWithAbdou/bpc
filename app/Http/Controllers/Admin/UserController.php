@@ -16,6 +16,7 @@ class UserController extends Controller
 
     public function __construct() {
         $this->model = ProjectModel::where('route_key', 'users')->first();
+
         view()->share('model', $this->model);
     }
 

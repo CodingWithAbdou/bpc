@@ -22,7 +22,15 @@
             </div>
             <div class="card-toolbar">
                 <x-table.item_order />
-                <x-table.create />
+                @if($model->route_key == 'financial-reports-annual')
+                    @can('admin.financial-reports-annual.add')
+                        <x-table.create />
+                    @endcan
+                @else
+                    @can('admin.financial-reports-quarter.add')
+                        <x-table.create />
+                    @endcan
+                @endif
             </div>
         </div>
         <div class="card-body pt-0">

@@ -1,6 +1,6 @@
 <td>
-    {{-- @can('admin.features.index') --}}
-        <a href="{{route('dashboard.governance.edit' , $record)}}"
+    @can('admin.governance.edit')
+    <a href="{{route('dashboard.governance.edit' , $record)}}"
            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1"
            data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.edit content')}}">
             <span class="svg-icon svg-icon-3">
@@ -10,6 +10,6 @@
                 </svg>
             </span>
         </a>
-    {{-- @endcan --}}
+    @endcan
 
 

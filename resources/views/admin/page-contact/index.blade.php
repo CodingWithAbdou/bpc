@@ -34,25 +34,31 @@
                 </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-800">
-
                 @foreach($data as $record)
-                    <tr>
-                        <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
-                        <td>
-                            {{$record->title}}
-                        </td>
-                        <td>{{$record->created_at}}</td>
-                        @php
-                        if($record->section_key == 'branch') {
-                            $actionComponentName = 'action-btn.branch';
-                        }else {
-                            $actionComponentName = 'action-btn.info';
-                        }
-                        @endphp
-                        <x-dynamic-component :component="$actionComponentName" :record="$record"/>
-                    </tr>
+                    @if($record->section_key == 'branch')
+                        @can('admin.branches.view')
+                            <tr>
+                                <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                                <td>
+                                    {{$record->title}}
+                                </td>
+                                <td>{{$record->created_at}}</td>
+                                @php $actionComponentName = 'action-btn.branch';  @endphp
+                                <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                            </tr>
+                        @endcan
+                    @else
+                        <tr>
+                            <td>@if($record->image_one)<div class="symbol symbol-50px bg-dark p-2"><img src="{{asset($record->image_one)}}" alt="" class="object-cover"></div>@endif</td>
+                            <td>
+                                {{$record->title}}
+                            </td>
+                            <td>{{$record->created_at}}</td>
+                            @php  $actionComponentName = 'action-btn.info';  @endphp
+                            <x-dynamic-component :component="$actionComponentName" :record="$record"/>
+                        </tr>
+                    @endif
                 @endforeach
-
                 </tbody>
             </table>
         </div>

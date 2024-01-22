@@ -42,6 +42,7 @@
                     <td>{{$data->created_at}}</td>
                     <x-action-btn.page_finance :record="$data"/>
                 </tr>
+                @can('admin.financial-reports-annual.view')
                 <tr>
                     <td>
                     </td>
@@ -49,6 +50,8 @@
                     <td>{{$financial_reports_annual->created_at}}</td>
                     <x-action-btn.finance :record="$financial_reports_annual"/>
                 </tr>
+                @endcan
+                @can('admin.financial-reports-quarter.view')
                 <tr>
                     <td>
                     </td>
@@ -56,6 +59,7 @@
                     <td>{{$financial_reports_quarter->created_at}}</td>
                     <x-action-btn.finance :record="$financial_reports_quarter"/>
                 </tr>
+                @endcan
                 </tbody>
             </table>
         </div>

@@ -13,7 +13,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{__('front.Job Application')}}</h5>
-                    <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                         <span class="svg-icon svg-icon-2x">
                             <i class="fas fa-times"></i>
@@ -258,9 +257,8 @@
             </div>
         </div>
     </div>
-    {{-- @can('admin.contacts.delete') --}}
+    @can('admin.career-form.delete')
         <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="{{route('dashboard.career.delete', $record)}}"
-        {{-- <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="#" --}}
             data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.delete')}}">
             <span class="text">
                 <span class="svg-icon svg-icon-3">
@@ -273,5 +271,5 @@
             </span>
             <span class="btn-loader d-none"><i class="fas fa-circle-notch fa-spin p-0"></i></span>
         </a>
-    {{-- @endcan --}}
+    @endcan
 </td>

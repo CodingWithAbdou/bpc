@@ -21,8 +21,6 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-{{--                <x-table.export />--}}
-{{--                <x-table.create />--}}
             </div>
         </div>
         <div class="card-body pt-0">
@@ -38,7 +36,7 @@
                 <tbody class="fw-bold text-gray-800">
                     @for ($i = 0; $i < count($data); $i++)
                         @php $record = $data[$i]  @endphp
-                        @if ($model->route_key == 'page-board-of-directors' and ($i ==2)) @break @endif
+                        @if ($model->route_key == 'page-board-of-directors' and ($i ==2))   @break @endif
                         @if ($model->route_key == 'page-committees' and ($i <= 1)) @continue @endif
                         @if ($model->route_key == 'page-committees' and ($i === 5 )) @break @endif
                         @if ($model->route_key == 'page-code-of-conduct' and ($i <= 4 )) @continue @endif
@@ -50,8 +48,8 @@
                                 {{$record->title_color . " " .$record->title }}
                             </td>
                             <td>{{$record->created_at}}</td>
-                            <x-action-btn.governance_show :record="$record"/>
-                        </tr>
+                                <x-action-btn.governance_show :record="$record" :key="$model->route_key"/>
+                            </tr>
                     @endfor
                 @if ($model->route_key == 'page-board-of-directors' and ($i ==2))
                 <tr>

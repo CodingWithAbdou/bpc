@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    {{-- @can('admin.contacts.delete') --}}
+    @can('admin.investor-services.delete')
         <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="{{route('dashboard.contacts.delete', $record)}}"
         {{-- <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="#" --}}
             data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.delete')}}">
@@ -71,5 +71,5 @@
             </span>
             <span class="btn-loader d-none"><i class="fas fa-circle-notch fa-spin p-0"></i></span>
         </a>
-    {{-- @endcan --}}
+    @endcan
 </td>

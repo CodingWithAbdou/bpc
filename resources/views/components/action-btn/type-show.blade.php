@@ -1,5 +1,5 @@
 <td>
-{{-- @can('admin.news.edit') --}}
+@can('admin.product-types.edit')
     <a href="{{route('dashboard.product-types.edit' , $record)}}"
     class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1"
     data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.edit')}}">
@@ -10,5 +10,5 @@
          </svg>
      </span>
  </a>
-{{-- @endcan --}}
+@endcan
 </td>

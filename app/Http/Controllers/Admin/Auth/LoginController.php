@@ -19,13 +19,17 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $input = $request->all();
+        unset($input['_token']);
 
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($input)) {
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
+
+        $request->session()->regenerate();
+
 
         $request->session()->regenerate();
 

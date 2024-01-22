@@ -23,15 +23,7 @@ class ProjectModelSeeder extends Seeder
             "icon" =>  'fas fa-users' ,
             "order_by" => '1'
         ]);
-        // ProjectModel::create([
-        //     'parent_id' => '4',
-        //     'route_key' => 'roles' ,
-        //     'title_ar'=> 'الصلاحيات' ,
-        //     'title_en'=> 'roles' ,
-        //     "is_menu" => '1' ,
-        //     "icon" =>  'fas fa-users-cog' ,
-        //     "order_by" => '2'
-        // ]);
+
         ProjectModel::create([
             'parent_id' => '3',
             'route_key' => 'settings' ,
@@ -574,5 +566,19 @@ class ProjectModelSeeder extends Seeder
             'model_name' => '\App\Models\NewsLetter',
             "multi_language" => '0',
         ]);
+
+        ProjectModel::create([
+            'parent_id' => '3',
+            'route_key' => 'roles' ,
+            'title_ar'=> "الصلاحيات" ,
+            'title_en'=> 'roles' ,
+            "is_menu" => '1' ,
+            "icon" =>  'fa fa-comment' ,
+            "order_by" => '2',
+            'model' => 'Role' ,
+            'model_name' => '\App\Models\Role',
+            "multi_language" => '0',
+        ]);
+
     }
 }

@@ -21,8 +21,7 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-                <x-table.item_order />
-                @can('admin.categories.add')
+                @can('admin.roles.add')
                 <x-table.create />
                 @endcan
             </div>
@@ -31,7 +30,7 @@
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="datatable">
                 <thead>
                 <tr class="text-start text-dark fw-bolder fs-7 text-uppercase gs-0">
-                    <th class="min-w-150px">{{__('dash.name')}}</th>
+                    <th class="min-w-250px">{{__('dash.name')}}</th>
                     <th class="min-w-150px">{{__('dash.created_at')}}</th>
                     <th class="min-w-70px no-export">{{__('dash.actions')}}</th>
                 </tr>
@@ -41,7 +40,7 @@
                     <tr>
                         <td>{{$record->name}}</td>
                         <td>{{$record->created_at}}</td>
-                        <x-action-btn.categories :record="$record"/>
+                        <x-action-btn.roles :record="$record"/>
                     </tr>
                 @endforeach
                 </tbody>
@@ -52,6 +51,22 @@
 
 @push('script')
     <x-js.datatables :data="$data"/>
+    <script>
+        $(document).ready(function() {
+            $('#export_excel').on('click', function (e) {
+                e.preventDefault();
+                Dtable.button(0).trigger();
+            });
+            $('#search').keyup(function(){
+                Dtable.search($(this).val()).draw();
+            });
+            $('#filter_reset').on('click', function (){
+                $('#search').val('');
+                Dtable.search('').draw();
+            });
+        });
+    </script>
+
     <x-js.form />
     <script>
         $(document).on('click', '.delete-btn', function (e){

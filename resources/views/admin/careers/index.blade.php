@@ -22,7 +22,9 @@
             </div>
             <div class="card-toolbar">
                 <x-table.item_order />
+                @can("admin.career-information.add")
                 <x-table.create />
+                @endcan
             </div>
         </div>
         <div class="card-body pt-0">

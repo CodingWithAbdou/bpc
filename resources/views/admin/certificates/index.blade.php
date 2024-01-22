@@ -21,8 +21,10 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-                <x-table.create />
                 <x-table.item_order />
+                @can('admin.certificates.add')
+                    <x-table.create />
+                @endcan
             </div>
         </div>
         <div class="card-body pt-0">

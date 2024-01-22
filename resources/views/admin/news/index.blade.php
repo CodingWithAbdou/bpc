@@ -24,8 +24,9 @@
                 @if($model->is_orderable)
                     <x-table.item_order />
                 @endif
-{{--                <x-table.export />--}}
+                @can('admin.articles.view')
                 <x-table.create />
+                @endcan
             </div>
         </div>
         <div class="card-body pt-0">

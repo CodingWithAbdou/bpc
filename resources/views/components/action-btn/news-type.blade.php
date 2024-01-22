@@ -1,5 +1,5 @@
 <td>
-    {{-- @can('admin.roles.edit') --}}
+    @can('admin.article-type.edit')
     <a href="{{route('dashboard.article-type.edit', $record)}}"
        class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1"
        data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.edit')}}">
@@ -10,8 +10,8 @@
             </svg>
         </span>
     </a>
-{{-- @endcan
-@can('admin.roles.delete') --}}
+@endcan
+@can('admin.article-type.delete')
     <a class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm delete-btn" data-url="{{route('dashboard.article-type.destroy', $record)}}"
        data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{__('dash.delete')}}">
         <span class="text">
@@ -25,5 +25,5 @@
         </span>
         <span class="btn-loader d-none"><i class="fas fa-circle-notch fa-spin p-0"></i></span>
     </a>
-{{-- @endcan --}}
+@endcan
 </td>

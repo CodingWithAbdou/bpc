@@ -30,9 +30,6 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-
-        $request->session()->regenerate();
-
         return redirect()->route('dashboard.home');
     }
 

@@ -1,5 +1,5 @@
 <head>
-    <title>{{\App\Models\Setting::where('setting_key', 'website_name_'.getLocale())->first()->setting_value}}</title>
+    {{-- <title>{{\App\Models\Setting::where('setting_key', 'website_name_'.getLocale())->first()->setting_value}}</title> --}}
 
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">

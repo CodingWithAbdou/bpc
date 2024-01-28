@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,7 +159,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...

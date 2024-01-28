@@ -38,14 +38,12 @@
                     <div class="row">
                         <x-inputs.text label="{{__('dash.name')}}" name="name" required="" data="{{isset($data)?$data->name:''}}"/>
 
-                        <x-inputs.text label="{{__('dash.email')}}" name="email" required="" data="{{isset($data)?$data->email:''}}"/>
-
-                        <x-inputs.password label="{{__('dash.password')}}" name="password" required=""/>
+                            <x-inputs.password label="{{__('dash.password')}}" name="password" required=""/>
 
                         <x-inputs.password label="{{__('dash.password_confirmation')}}" name="password_confirmation" required=""/>
 
-                        <x-inputs.select label="{{__('dash.role_id')}}" name="role_id" required="" data="{{isset($data)?$data->role_id:''}}"
-                                         :list="\App\Models\Role::all()" optionValue="id" optionName="name" />
+                        <x-inputs.select label="{{__('dash.role_id')}}" name="role" required="" data="{{isset($data)?$data->role:''}}"
+                                        :list="\App\Models\Role::all()" optionValue="id" optionName="name" />
                     </div>
                 </div>
             </div>

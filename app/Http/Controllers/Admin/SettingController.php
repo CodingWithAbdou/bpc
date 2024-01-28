@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProjectModel;
 use App\Models\Setting;
-use Facebook\Facebook;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -40,47 +39,10 @@ class SettingController extends Controller
             'address_en' => 'required',
             'footer_description_ar' => 'required',
             'footer_description_en' => 'required',
-            'facebook' => 'nullable',
-            'twitter' => 'nullable',
-            'instagram' => 'nullable',
-            'linkedin' => 'nullable',
-            'youtube' => 'nullable',
-
-            'facebook_id' => 'nullable',
-            'facebook_secert' => 'nullable',
-            'facebook_token' => 'nullable',
-
         ]);
 
 
         $inputs = $request->all();
-        $app_id =  Setting::where('setting_key' , 'facebook_id')->first()->setting_value;
-        $app_secert =  Setting::where('setting_key' , 'facebook_secert')->first()->setting_value;
-        $short_token = Setting::where('setting_key' , 'facebook_token')->first()->setting_value;
-        if($short_token != $request->facebook_token || $app_secert != $request->facebook_secert || $app_id != $request->facebook_id){
-            $short_token = $request->facebook_token ;
-            $app_secert = $request->facebook_secert ;
-            $app_id = $request->facebook_id ;
-            $fb = new Facebook([
-                'app_id' =>  $app_id,
-                'app_secret' => $app_secert,
-                'default_graph_version' => 'v18.0', // Use the latest version
-            ]);
-            try{
-                $long_access_token = $fb->get(
-                    '/oauth/access_token?grant_type=fb_exchange_token&client_id='. $app_id.'&client_secret='.$app_secert.'&fb_exchange_token='.$short_token.'"',
-                    $short_token,
-                );
-                $access_token = $long_access_token->getDecodedBody()['access_token'];
-                Setting::where('setting_key', 'facebook_token_long')->first()->update([
-                    'setting_value' => $access_token
-                ]);
-            } catch (\Facebook\Exceptions\FacebookResponseException $e) {
-                // echo 'Graph returned an error: ' . $e->getMessage();
-            } catch (\Facebook\Exceptions\FacebookSDKException $e) {
-                // echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            }
-        }
         foreach ($inputs as $index=>$value){
             $setting = Setting::where('setting_key', $index)->first();
             if($setting){

@@ -187,5 +187,8 @@ return [
     'message arbic' => 'رسالتنا بالعربية',
     "type category" => "نوع التصنيف" ,
     'download' => 'تنزيل',
+    'admins' => 'مدير',
+    'clients' => 'عميل',
+    'client' => 'العملاء',
 
 ];

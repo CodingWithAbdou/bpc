@@ -87,7 +87,7 @@ function acceptFileType($val=1){
 }
 function getMaxSize($type=null){
     if($type == 'mb'){
-        return 10;
+        return 2;
     }
-    return 10240;
+    return 2048;
 }

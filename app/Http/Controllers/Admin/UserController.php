@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProjectModel;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -16,7 +15,6 @@ class UserController extends Controller
 
     public function __construct() {
         $this->model = ProjectModel::where('route_key', 'users')->first();
-
         view()->share('model', $this->model);
     }
 
@@ -25,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::orderBy('created_at', 'desc')->get();
+        $data = User::orderBy('created_at', 'asc')->get();
         return view('admin.users.index' , compact('data'));
     }
 
@@ -43,12 +41,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users,email',
+            'name' => 'required|unique:users',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
             'image' => 'nullable|max:'.getMaxSize().'|mimes:'.acceptImageType(0),
-            'role_id' => 'required',
+            "role" => 'required'
         ]);
 
         $input = $request->all();
@@ -57,12 +54,6 @@ class UserController extends Controller
             $input['image'] = generalUpload('User', $request->image);
         }
         $data = User::create($input);
-
-        $role = Role::where('id', $data->role_id)->first();
-        // foreach (auth()->user()->roles as $name){
-        //     $data->removeRole($name);
-        // }
-        // $data->assignRole($role->name);
 
         $status = true;
         $msg = __('dash.created successfully');
@@ -93,11 +84,11 @@ class UserController extends Controller
     public function update(Request $request, User $obj)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users,email,'.$obj->id,
-            'phone' => 'nullable|size:17|unique:users,phone,'.$obj->id,
+            'name' => 'required|unique:users,name,'. $obj->id,
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
             'image' => 'nullable|max:'.getMaxSize().'|mimes:'.acceptImageType(0),
-            'role_id' => 'required',
+            "role" => 'required'
         ]);
 
         $input = $request->all();
@@ -116,11 +107,6 @@ class UserController extends Controller
 
         $obj->update($input);
 
-        $role = Role::where('id', $obj->role_id)->first();
-        // foreach (auth()->user()->roles as $name){
-        //     $obj->removeRole($name);
-        // }
-        // $obj->assignRole($role->name);
 
         $status = true;
         $msg = __('dash.updated successfully');

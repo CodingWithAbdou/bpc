@@ -11,24 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('roles', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name');
-        //     $table->string('guard_name')->default('admin');
-        //     $table->timestamps();
-        // });
-
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id')->nullable();
+            $table->integer('role')->nullable();
 
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('name')->unique();
             $table->string('image')->nullable();
             $table->string('password');
             $table->rememberToken();
-            // $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });
     }

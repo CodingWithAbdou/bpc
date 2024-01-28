@@ -8,7 +8,7 @@
             title: title,
             icon: type,
             confirmButtonText: '{{__('dash.ok')}}',
-            confirmButtonColor: '#00a39a',
+            confirmButtonColor: '#4ba0cb',
         }).then(function (){
             if (url)
                 window.location = url;

@@ -2,14 +2,15 @@
 
 @section('content')
     <div class="d-flex flex-column flex-root">
-        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url({{asset('dashboard_assets/media/illustrations/sketchy-1/14.png')}}">
+        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" >
+            <div class="foggy-overlay"></div>
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <img alt="Logo" src="{{asset(asset(\App\Models\Setting::where('setting_key', 'logo')->first()->setting_value))}}" class="h-40px mb-10" />
+                <img alt="Logo" src="{{asset(asset(\App\Models\Setting::where('setting_key', 'second_logo')->first()->setting_value))}}" class=" mb-10" style="max-height:60px;" />
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-                    <form class="form w-100" method="POST" action="{{route('dashboard.login.form')}}">
+                    <form class="form w-100" method="POST" action="{{route('home.login.form')}}">
                         @csrf
                         <div class="text-center mb-10">
-                            <h1 class="text-dark mb-3">{{__('dash.Sign In to Dashboard')}}</h1>
+                            <h1 class="text-dark mb-3">{{__('front.Sign In')}}</h1>
                         </div>
                         @if ($errors->any())
                             <!--begin::Alert-->
@@ -39,8 +40,8 @@
                         @endif
 
                         <div class="fv-row mb-10">
-                            <label class="form-label fs-6 fw-bolder text-dark">{{__('dash.email')}}</label>
-                            <input class="form-control form-control-lg form-control-solid" type="text" name="email" />
+                            <label class="form-label fs-6 fw-bolder text-dark">{{__('dash.name')}}</label>
+                            <input class="form-control form-control-lg form-control-solid" type="text" name="name" />
                         </div>
                         <div class="fv-row mb-10">
                             <label class="form-label fs-6 fw-bolder text-dark">{{__('dash.password')}}</label>
@@ -61,4 +62,20 @@
 
 @push('script')
     <script src="{{asset('dashboard_assets/js/custom/authentication/sign-in/general.js')}}"></script>
+@endpush
+
+@push('style')
+<style>
+    .foggy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('{{asset('front_assets/images/background.png')}}');
+    background-size: cover;
+    filter: blur(3px);
+    z-index: -1;
+}
+</style>
 @endpush

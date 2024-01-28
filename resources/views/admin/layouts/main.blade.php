@@ -53,6 +53,7 @@
 <!--end::Root-->
 
 @include('admin.layouts.scripts')
+@stack('style')
 </body>
 <!--end::Body-->
 </html>

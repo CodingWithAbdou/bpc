@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="reset" class="btn btn-light btn-active-light-primary me-2">{{__('dash.discard')}}</button>
+                    <a href="{{route('dashboard.home')}}" type="reset" class="btn btn-light btn-active-light-primary me-2">{{__('dash.discard')}}</a>
                     <button type="submit" class="btn btn-primary">{{__('dash.save changes')}}</button>
                 </div>
             </form>

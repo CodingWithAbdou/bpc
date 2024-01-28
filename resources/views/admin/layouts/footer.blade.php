@@ -4,7 +4,7 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted fw-bold me-1">{{now()->year}}©</span>
-            <a href="https://fis.ps" target="_blank" class="text-gray-800 text-hover-primary">FIS</a>
+            <a href="https://github.com/CodingWithAbdou" target="_blank" class="text-gray-800 text-hover-primary">Developed by Abdou</a>
         </div>
         <!--end::Copyright-->
     </div>

@@ -18,7 +18,7 @@ class Language
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $languages = ['ar', 'en'];
+        $languages = ['ar', 'en' , 'fr'];
         if (Session::has('language') AND in_array(Session::get('language'), $languages)) {
             App::setLocale(Session::get('language'));
         } else {

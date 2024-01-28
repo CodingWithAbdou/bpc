@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-
     private $model_name = 'User';
 
     public function index()
@@ -23,7 +22,6 @@ class ProfileController extends Controller
         $user = auth()->user();
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id,
             'image' => 'nullable|mimes:'.acceptImageType(0).'|max:'.getMaxSize(),
         ]);
 
@@ -31,7 +29,7 @@ class ProfileController extends Controller
 
         try {
             if(isset($input['image'])){
-                $input['image'] = generalUpload($this->model_name, $input['image']);
+                $input['image'] = generalUpload('users' ,  $input['image']);
             }else{
                 $input['image'] = $user->image;
             }

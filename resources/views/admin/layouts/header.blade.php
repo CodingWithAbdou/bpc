@@ -16,7 +16,7 @@
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="{{route('dashboard.home')}}" class="d-lg-none">
-                {{-- <img alt="Logo" src="{{asset(\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value)}}" class="h-30px" /> --}}
+                <img alt="Logo" src="{{asset(\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value)}}" class="h-30px" />
             </a>
         </div>
         <!--end::Mobile logo-->
@@ -33,7 +33,7 @@
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
                     @if(app()->getLocale() == 'ar')
                         <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        href="{{route('lang.switchLang', 'en')}}">EN
+                        href="{{route('lang.switchLang', 'en')}}">En
                     </a>
                     @else
                     <a class="btn btn-icon text-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"

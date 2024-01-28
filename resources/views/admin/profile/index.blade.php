@@ -91,12 +91,12 @@
                             <input type="text" name="name" class="form-control form-control-lg form-control-solid" value="{{$user->name}}" />
                         </div>
                     </div>
-                    <div class="row mb-6">
+                    {{-- <div class="row mb-6">
                         <label class="col-lg-4 col-form-label required fw-bold fs-6">{{__('dash.email')}}</label>
                         <div class="col-lg-8 fv-row">
                             <input type="text" name="email" class="form-control form-control-lg form-control-solid" value="{{$user->email}}" />
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-6">
                         {{-- <label class="col-lg-4 col-form-label required fw-bold fs-6">{{__('dash.role_id')}}</label> --}}
                         <div class="col-lg-8 fv-row">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="reset" class="btn btn-light btn-active-light-primary me-2">{{__('dash.discard')}}</button>
+                    <a href="{{route('dashboard.home')}}" type="reset" class="btn btn-light btn-active-light-primary me-2">{{__('dash.discard')}}</a>
                     <button type="submit" class="btn btn-primary">{{__('dash.save changes')}}</button>
                 </div>
             </form>

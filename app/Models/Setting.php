@@ -12,6 +12,4 @@ class Setting extends Model
     'order_no', 'is_hidden'];
 
     public $timestamps = false;
-
-
 }

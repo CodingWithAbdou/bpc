@@ -48,7 +48,7 @@
                             </div>
                         </td>
                         <td>{{$record->created_at}}</td>
-                        <x-action-btn.admins :record="$record"/>
+                        <x-action-btn.users :record="$record"/>
                     </tr>
                 @endforeach
                 </tbody>

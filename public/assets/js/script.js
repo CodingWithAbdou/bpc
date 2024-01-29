@@ -10,7 +10,7 @@ $(document).ready(function () {
     function openMenu() {
         document.querySelector(".nav-info").classList.toggle("active");
     }
-    let number = 1;
+    let number = 0;
     let loopValue = 0;
 
     const peopleInput = document.getElementById("people");
@@ -23,17 +23,25 @@ $(document).ready(function () {
     roomInput.addEventListener("input", validateNumericInput);
 
     function focusEvent() {
-        number = 1;
+        number = 0;
     }
     function blurEvent() {
         if (!isNaN(loopValue)) {
             loopValue = peopleInput.value;
             personsSection.innerHTML = "";
         }
-
         for (let i = 0; i < loopValue; i++) {
-            personsSection.innerHTML += `<div class="theard-section"><div class="label">person ${number}</div><div><div class="full-name"><input placeholder="name and username" id="first_name" type="text" class="validate"></div><div class="age"><input placeholder="age" id="first_name" type="text" class="validate"></div><div class="input-field passport"><input placeholder="N.passport" id="first_name" type="text" class="validate"></div><div class="nationality"><input placeholder="nationality" id="first_name" type="text" class="validate"></div></div></div>`;
-            number++;
+            ++number;
+            let html_row_ar = `<div class="theard-section"><div class="label">شخص ${number}</div><div><div class="full-name"><input placeholder="الاسم واللقب" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="العمر" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="رقم جواز السفر" id="first_name" type="text" class="validate" name="number_passport"></div><div class="nationality"><input placeholder="nationality" id="الحنسية" name="nationality[]" type="text" class="validate"></div></div></div>`;
+            let html_row_en = `<div class="theard-section"><div class="label">person ${number}</div><div><div class="full-name"><input placeholder="name and surname" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="age" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="N.passport" id="first_name" type="text" class="validate" name="number_passport"></div><div class="nationality"><input placeholder="nationality" id="nationality" name="nationality[]" type="text" class="validate"></div></div></div>`;
+            let html_row_fr = `<div class="theard-section"><div class="label">personne ${number}</div><div><div class="full-name"><input placeholder="Nom et Prénom" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="âge" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="N.passeport" id="first_name" type="text" class="validate" name="number_passport"></div><div class="nationality"><input placeholder="nationalité" id="nationality" name="nationality[]" type="text" class="validate"></div></div></div>`;
+            if (document.body.classList.contains("ar")) {
+                personsSection.innerHTML += html_row_ar;
+            } else if (document.body.classList.contains("en")) {
+                personsSection.innerHTML += html_row_en;
+            } else {
+                personsSection.innerHTML += html_row_fr;
+            }
         }
     }
     function validateNumericInput() {

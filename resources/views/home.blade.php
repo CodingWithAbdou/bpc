@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+@if(app()->getLocale() == 'ar')
+    <html  dir="rtl" lang="ar">
+@elseif(app()->getLocale() == 'en')
+    <html dir="ltr" lang="en">
+@else
+    <html dir="ltr" lang="fr">
+@endif
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +16,8 @@
             name="author"
             content="Khaldi Abdou  @https://khamsat.com/user/khaldi_abdou" />
         <meta name="copyright" content="https://github.com/CodingWithAbdou" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }} " />
@@ -20,7 +28,13 @@
 
         <title> </title>
     </head>
-    <body>
+    @if(getLocale() == 'ar')
+        <body class="ar">
+    @elseif(getLocale() == 'fr')
+        <body class="fr">
+    @else
+        <body class="en">
+    @endif
         <div class="navigation">
             <div class="container">
                 <div class="logo">
@@ -31,16 +45,20 @@
                 </div>
                 <div class="nav-info">
                     <div class="lang">
-                        <a href="">عربــي</a>
-                        <a href="">frensh</a>
-                        <a href="">english</a>
+                        <a href="{{route('lang.switchLang', 'ar')}}">عربــي</a>
+                        <a href="{{route('lang.switchLang', 'fr')}}">frensh</a>
+                        <a href="{{route('lang.switchLang', 'en')}}">english</a>
                     </div>
                     <div class="auth">
-                        <a href="">Log In</a>
-                        <a href="">Sign Up</a>
+                        @auth
+                            <a href="{{route('dashboard.logout')}}">{{__('dash.sign out')}}</a>
+                        @else
+                            <a href="{{route('home.login.index')}}">{{__('front.Log In')}}</a>
+                            <a href="{{route('home')}}">{{__('front.Sign Up')}}</a>
+                            <img src="{{ asset('assets/images/serch.svg') }} " alt="" />
+                        @endauth
                     </div>
                     <div class="serch">
-                        <img src="{{ asset('assets/images/serch.svg') }} " alt="" />
                     </div>
                 </div>
             </div>
@@ -52,14 +70,14 @@
                 style="background: url('{{ asset('assets/images/background.png') }}')">
                 <div class="container">
                     <div class="head-title">
-                        <h1>Canturk Hotel Resrvation</h1>
-                        <p>Request your reservation now</p>
+                        <h1>{{__('front.Canturk Hotel Resrvation')}}</h1>
+                        <p>{{__('front.Request your reservation now')}}</p>
                     </div>
-                    <form action="">
+                    <form action="{{route('form')}}" id="data_form">
                         <div class="frist-section">
                             <div class="input-field">
-                                <select>
-                                    <option value="">Choose Location</option>
+                                <select name="location">
+                                    <option value="">{{__('front.Choose Location')}}</option>
                                     <option value="1">ISTANBUL</option>
                                     <option value="2">ANTALYA</option>
                                     <option value="3">TRABZON</option>
@@ -68,8 +86,9 @@
                             <div class="bar"></div>
                             <div class="full-name">
                                 <input
-                                    placeholder="Choose Hotel"
-                                    id="first_name"
+                                    placeholder="{{__('front.Choose Hotel')}}"
+                                    id="hotel"
+                                    name="hotel"
                                     type="text"
                                     class="validate" />
                             </div>
@@ -78,7 +97,8 @@
                             <div>
                                 <input
                                     type="text"
-                                    placeholder="check in"
+                                    placeholder="{{__('front.check in')}}"
+                                    name="checkin"
                                     class="datepicker" />
                             </div>
                             <div class="bar"></div>
@@ -86,47 +106,52 @@
                             <div>
                                 <input
                                     type="text"
-                                    placeholder="check out"
+                                    placeholder="{{__('front.check out')}}"
+                                    name="checkout"
                                     class="datepicker" />
                             </div>
                         </div>
                         <div class="secode-section">
                             <div class="">
-                                <label for="first_name">Phone</label>
+                                <label for="phone">{{__('front.Phone')}}</label>
                                 <input
                                     placeholder="+213 560 40 32 21"
-                                    id="first_name"
+                                    id="phone"
+                                    name="phone"
                                     type="text"
                                     class="validate" />
                             </div>
                             <div class="">
-                                <label for="first_name">E-mail</label>
+                                <label for="email">{{__('front.E-mail')}}</label>
                                 <input
                                     placeholder="Info@Canturcktourousim.com"
-                                    id="first_name"
+                                    id="email"
+                                    name="email"
                                     type="text"
                                     class="validate" />
                             </div>
                             <div class="last">
-                                <label for="people">People</label>
+                                <label for="people">{{__('front.People')}}</label>
                                 <input
-                                    placeholder="number of persons"
+                                    placeholder="{{__('front.number of persons')}}"
                                     id="people"
+                                    name="number_people"
                                     type="text"
                                     class="validate" />
                             </div>
                             <div class="last">
-                                <label for="room">Room</label>
+                                <label for="room">{{__('front.Room')}}</label>
                                 <input
-                                    placeholder="number of rome"
+                                    placeholder="{{__('front.number of rooms')}}"
                                     id="room"
+                                    name="room"
                                     type="text"
                                     class="validate" />
                             </div>
                         </div>
                         <div id="persons_section"></div>
                         <div class="last-section">
-                            <div>They need a transfewr from aitport ?</div>
+                            <div>{{ __('front.They need a transfer from the airport?') }}</div>
 
                             <div class="bar"></div>
 
@@ -135,18 +160,20 @@
                                     <label>
                                         <input
                                             class="with-gap"
-                                            name="group1"
-                                            type="radio" />
-                                        <span>Yes</span>
+                                            name="delivery"
+                                            type="radio"
+                                            checked
+                                            />
+                                        <span>{{__('front.Yes')}}</span>
                                     </label>
                                 </div>
                                 <div>
                                     <label>
                                         <input
                                             class="with-gap"
-                                            name="group1"
+                                            name="delivery"
                                             type="radio" />
-                                        <span>No</span>
+                                        <span>{{__('front.No')}}</span>
                                     </label>
                                 </div>
                             </div>
@@ -154,8 +181,9 @@
 
                             <div class="">
                                 <input
-                                    placeholder="Flight No"
-                                    id="first_name"
+                                    placeholder="{{__('front.Flight No')}}"
+                                    id="flight"
+                                    name="flight_no"
                                     type="text"
                                     class="validate" />
                             </div>
@@ -163,27 +191,30 @@
 
                             <div class="">
                                 <input
-                                    placeholder="Arrival Time"
-                                    id="first_name"
+                                    placeholder="{{__('front.Arrival Time')}}"
+                                    id="arrival"
+                                    name="arrival_time"
                                     type="text"
                                     class="validate" />
                             </div>
                         </div>
-                        <a class="btn-request"> Request </a>
+                        <button type="submit" class="btn-request"> {{__('front.Request')}} </button>
                     </form>
                 </div>
             </section>
             <section class="subscribe">
                 <div class="container">
-                    <div>Subsctibe and be notifed about new locations</div>
+                    <div>{{__('front.Subsctibe and be notifed about new locations')}}</div>
                     <div class="input-field inline email">
                         <input
                             id="email_inline"
                             type="email"
-                            placeholder="Your Email"
+                            name="email_sub"
+                            placeholder="{{__('front.Your Email')}}"
                             class="validate" />
                         <a href="">
                             <img
+                            class="arrow"
                                 src="{{ asset('assets/images/arrow.svg') }} "
                                 height="14"
                                 alt="" />
@@ -196,7 +227,7 @@
             <div class="container">
                 <div>
                     <div>
-                        <h4>CanTurk Tourism</h4>
+                        <h4>{{__('front.CanTurk Tourism')}}</h4>
                         <p>
                             Welcome to Canturk Tourism, your gateway to
                             unforgettable experiences in Istanbul! Immerse
@@ -208,7 +239,7 @@
                 <div>
                     <div>
                         <div>
-                            <h4>Contact</h4>
+                            <h4>{{__('front.Contact')}}</h4>
                             <div class="info">
                                 <img
                                     src="{{ asset('assets/images/location.png') }} "
@@ -248,5 +279,64 @@
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }} "></script>
     <script src="{{ asset('assets/js/materialize.min.js') }} "></script>
     <script src="{{ asset('assets/js/script.js') }} "></script>
+    <x-js.form />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const SwalModal = (text ,type ,url) => {
+            swal.fire({
+                text: text,
+                icon: type,
+                confirmButtonText: '{{__('front.Ok got it')}}',
+                confirmButtonColor: '#4ca1af',
+            }).then(function (){
+                if (url)
+                    window.location = url;
+            });
+        };
+    </script>
+    <script>
 
+
+        $(document).on('submit', '#data_form', function(e){
+            e.preventDefault();
+            let form = $(this);
+            loaderStart(form.find('button[type="submit"]'));
+            HideValidationError(form);
+            let action = $(this).attr('action');
+            $.ajax({
+                headers:  {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: "POST",
+                url: action,
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+                    if(response.status){
+                        SwalModal(response.msg, 'success');
+                    }else{
+                        SwalModal(response.msg, 'errors');
+                    }
+                    form.trigger('reset');
+                    form.find('select').val(null).trigger('change');
+                    loaderEnd(form.find('button[type="submit"]'));
+                },
+                error: function (response) {
+                    let array= []
+                    $.each(response.responseJSON.errors, function (i, value) {
+                        let index = i.split('.')[0];
+                        console.log(index);
+
+                        showValidationError(form, index, value);
+                    });
+                    Swal.fire({
+                        title: '{{__('front.check the input')}}',
+                        icon: 'error',
+                        confirmButtonText: '{{__('dash.ok')}}',
+                    })
+                    loaderEnd(form.find('button[type="submit"]'));
+                }
+            });
+        })
+    </script>
 </html>

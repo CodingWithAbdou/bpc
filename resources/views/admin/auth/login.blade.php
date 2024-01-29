@@ -5,12 +5,14 @@
         <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" >
             <div class="foggy-overlay"></div>
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <img alt="Logo" src="{{asset(asset(\App\Models\Setting::where('setting_key', 'second_logo')->first()->setting_value))}}" class=" mb-10" style="max-height:60px;" />
+                <a href="{{route('home')}}">
+                    <img alt="Logo" src="{{asset(asset(\App\Models\Setting::where('setting_key', 'second_logo')->first()->setting_value))}}" class=" mb-10" style="max-height:60px;" />
+                </a>
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                     <form class="form w-100" method="POST" action="{{route('home.login.form')}}">
                         @csrf
                         <div class="text-center mb-10">
-                            <h1 class="text-dark mb-3">{{__('front.Sign In')}}</h1>
+                            <h1 class="text-dark mb-3">{{__('front.Log In')}}</h1>
                         </div>
                         @if ($errors->any())
                             <!--begin::Alert-->

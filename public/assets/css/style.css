@@ -67,12 +67,78 @@ input::placeholder {
 input:focus::placeholder {
     color: transparent;
 }
+.select-dropdown.dropdown-content li {
+    text-align: start;
+}
 
 body {
     font-family: var(--ff-montserrat);
     scroll-behavior: smooth;
-    overflow: hidden;
 }
+
+body.ar,
+.ar .form-section .head-title h1,
+.ar .form-section .head-title p,
+.ar .theard-section .label,
+.ar .secode-section > div > label,
+.ar footer > .container > div:first-of-type h4 {
+    font-family: var(--ff-Al-Jazeera);
+}
+input:not([type]),
+input[type="text"]:not(.browser-default),
+input[type="password"]:not(.browser-default),
+input[type="email"]:not(.browser-default),
+input[type="url"]:not(.browser-default),
+input[type="time"]:not(.browser-default),
+input[type="date"]:not(.browser-default),
+input[type="datetime"]:not(.browser-default),
+input[type="datetime-local"]:not(.browser-default),
+input[type="tel"]:not(.browser-default),
+input[type="number"]:not(.browser-default),
+input[type="search"]:not(.browser-default),
+textarea.materialize-textarea {
+    font-family: var(--ff-montserrat);
+}
+.ar input:not([type]),
+.ar input[type="text"]:not(.browser-default),
+.ar input[type="password"]:not(.browser-default),
+.ar input[type="email"]:not(.browser-default),
+.ar input[type="url"]:not(.browser-default),
+.ar input[type="time"]:not(.browser-default),
+.ar input[type="date"]:not(.browser-default),
+.ar input[type="datetime"]:not(.browser-default),
+.ar input[type="datetime-local"]:not(.browser-default),
+.ar input[type="tel"]:not(.browser-default),
+.ar input[type="number"]:not(.browser-default),
+.ar input[type="search"]:not(.browser-default),
+textarea.materialize-textarea {
+    font-family: var(--ff-Al-Jazeera);
+}
+.ar .select-wrapper .caret {
+    right: auto;
+    left: 0;
+}
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background: var(--sky);
+    font-family: var(--ff-Al-Jazeera);
+}
+.ar .arrow {
+    transform: rotate(180deg);
+}
+ul:not(.browser-default) {
+    padding-inline-start: 0rem;
+}
+.d-block {
+    display: block !important;
+}
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
 body::-webkit-scrollbar {
     width: 1em;
 }
@@ -83,7 +149,10 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: var(--sky);
 }
-
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sky) rgba(0, 0, 0, 0.3);
+}
 /*
 ****
 * Classes

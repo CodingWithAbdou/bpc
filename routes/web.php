@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use GuzzleHttp\Middleware;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class , 'index'])->name('home');
+Route::post('/form', [FormController::class , 'form'])->name('form');
 
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switchLang');
 
@@ -34,14 +36,11 @@ Route::group(['middleware' => 'guest' ] , function() {
     Route::get('login', [LoginController::class , 'index'] )->name('home.login.index');
     Route::post('login/submit', [LoginController::class , 'login'] )->name('home.login.form');
 });
-
+//logout
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('dashboard.logout')->middleware('auth');
 
 Route::group([ 'prefix' => 'admin' , 'middleware' => 'admin'] , function () {
     Route::get('dashboard', [HomeDashController::class, 'index'])->name('dashboard.home');
-
-    //logout
-    Route::get('logout', [LoginController::class, 'logout'])->name('dashboard.logout');
-
 
     //profile
     Route::get('profile', [ProfileController::class, 'index'])->name('dashboard.profile.index');

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
     public function form(Request $request)
     {
+
         $this->validate($request, [
             'location' => 'required',
             'hotel' => 'required',
@@ -25,5 +27,42 @@ class FormController extends Controller
             'flight_no' => 'required',
             'arrival_time' => 'required',
         ]);
+
+        $inputs = $request->all();
+        if($request->delivery == 'on') {
+            $inputs['delivery'] = 1;
+        }else {
+            $inputs['delivery'] = 0;
+        }
+        if (auth()->check()) {
+            $inputs['auth'] = 1;
+        }else {
+            $inputs['auth'] = 0;
+        }
+
+
+        $reservation = Reservation::create($inputs);
+
+        if($request->number_people)
+        {
+            foreach($request->fullname as $key=>$fullname) {
+                if($fullname == null) continue;
+                $reservation->peoples()->create([
+                    'reservation_id' => $reservation->id,
+                    'age' => $request->age[$key],
+                    // 'number_passport' => $request->number_passport[$key] ,
+                    'nationality' => $request->nationality[$key] ,
+                    'fullname' => $request->fullname[$key],
+                ]);
+            }
+        }
+
+
+
+        $status = true;
+        $msg = __('front.application_success');
+
+        return response()->json(compact('status', 'msg'));
+
     }
 }

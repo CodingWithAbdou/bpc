@@ -20,9 +20,14 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function registered()
     {
-        $data = Reservation::orderBy('created_at', 'desc')->get();
+        $data = Reservation::orderBy('created_at', 'desc')->where("auth" , "1")->get();
+        return view('admin.reservations.index' , compact('data'));
+    }
+    public function noRegistered()
+    {
+        $data = Reservation::orderBy('created_at', 'desc')->where("auth" , "0")->get();
         return view('admin.reservations.index' , compact('data'));
     }
 

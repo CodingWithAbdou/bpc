@@ -44,4 +44,9 @@ return [
     "person" => "person" ,
     "Subsctibe and be notifed about new locations" => "Subsctibe and be notifed about new locations" ,
     "check the input" => "check the input" ,
+    "application_success" => "Application Success" ,
+    "Ok got it" => "Ok" ,
+    "copyright" => "All rights reserved . &copy;  Copyright by Oussama Benabila." ,
+    "" => "" ,
+    "" => "" ,
 ];

@@ -9,9 +9,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content=" , ,  " />
-        <meta name="title" content="" />
-        <meta name="description" content="" />
+        <meta name="keywords" content="{{\App\Models\Setting::where('setting_key', 'keywords')->first()->setting_value}}" />
+        <meta name="title" content="{{\App\Models\Setting::where('setting_key', 'website_name_' . getLocale() )->first()->setting_value}}" />
+        <meta name="description" content="{{\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value}}" />
         <meta
             name="author"
             content="Khaldi Abdou  @https://khamsat.com/user/khaldi_abdou" />
@@ -21,12 +21,10 @@
         <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }} " />
-        {{-- <link
-            rel="shortcut icon"
-            href="images/logo2.jpeg"
-            type="image/x-icon" /> --}}
+        <link rel="shortcut icon" href="{{asset(\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value)}}" />
 
-        <title> </title>
+
+        <title>{{\App\Models\Setting::where('setting_key', 'website_name_' . getLocale() )->first()->setting_value}} </title>
     </head>
     @if(getLocale() == 'ar')
         <body class="ar">
@@ -75,12 +73,12 @@
                     </div>
                     <form action="{{route('form')}}" id="data_form">
                         <div class="frist-section">
-                            <div class="input-field">
+                            <div class="input-field" >
                                 <select name="location">
                                     <option value="">{{__('front.Choose Location')}}</option>
-                                    <option value="1">ISTANBUL</option>
-                                    <option value="2">ANTALYA</option>
-                                    <option value="3">TRABZON</option>
+                                    @foreach ($locations as $location)
+                                        <option value="{{$location->{'name_' . getLocale() } }}" data-icon="{{asset($location->image) }}" class="right">{{$location->{'name_' . getLocale() } }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="bar"></div>
@@ -229,10 +227,7 @@
                     <div>
                         <h4>{{__('front.CanTurk Tourism')}}</h4>
                         <p>
-                            Welcome to Canturk Tourism, your gateway to
-                            unforgettable experiences in Istanbul! Immerse
-                            yourself in the charm of this vibrant city with our
-                            expertly crafted travel solutions.
+                            {{\App\Models\Setting::where('setting_key', 'footer_description_' . getLocale() )->first()->setting_value}}
                         </p>
                     </div>
                 </div>
@@ -246,8 +241,7 @@
                                     width="16"
                                     alt="" />
                                 <span>
-                                    Balabana a, Kurultay Sk. No:25/1, 34134
-                                    Fatih/ stanbul
+                                    {{\App\Models\Setting::where('setting_key', 'address_' . getLocale() )->first()->setting_value}}
                                 </span>
                             </div>
                             <div class="info">
@@ -255,7 +249,7 @@
                                     src="{{ asset('assets/images/phone.png') }} "
                                     width="16"
                                     alt="" />
-                                <span class="phone">(+90) 545 362 00 80</span>
+                                <span class="phone">{{\App\Models\Setting::where('setting_key', 'phone' )->first()->setting_value}}</span>
                             </div>
                         </div>
                         <div>
@@ -271,7 +265,7 @@
         </footer>
         <div class="footer">
             <div class="container">
-                &copy; 2024 Copyright by Oussama Benabila. All rights reserved.
+                {!! __("front.copyright") !!} <span id="year"></span>
             </div>
         </div>
         <!-- <input type="text" class="datepicker" /> -->
@@ -288,6 +282,11 @@
                 icon: type,
                 confirmButtonText: '{{__('front.Ok got it')}}',
                 confirmButtonColor: '#4ca1af',
+                customClass: {
+                    title: "Nexa-Thin",
+                    content: 'Nexa-Thin',
+                    confirmButton: 'Nexa-Thin',
+                }
             }).then(function (){
                 if (url)
                     window.location = url;
@@ -317,7 +316,8 @@
                     }else{
                         SwalModal(response.msg, 'errors');
                     }
-                    form.trigger('reset');
+                    // form.trigger('reset');
+                    form.find(':input:not(.datepicker)').val('');
                     form.find('select').val(null).trigger('change');
                     loaderEnd(form.find('button[type="submit"]'));
                 },
@@ -332,6 +332,7 @@
                     Swal.fire({
                         title: '{{__('front.check the input')}}',
                         icon: 'error',
+                        confirmButtonColor: '#4ca1af',
                         confirmButtonText: '{{__('dash.ok')}}',
                     })
                     loaderEnd(form.find('button[type="submit"]'));

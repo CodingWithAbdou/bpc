@@ -21,34 +21,31 @@
                 <x-table.search />
             </div>
             <div class="card-toolbar">
-                <x-table.export />
+                <x-table.create />
             </div>
+
         </div>
         <div class="card-body pt-0">
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="datatable">
                 <thead>
                 <tr class="text-start text-dark fw-bolder fs-7 text-uppercase gs-0">
-                    <th class="min-w-250px">{{__('dash.email')}}</th>
-                    <th class="min-w-250px">{{__('dash.phone')}}</th>
-                    <th class="min-w-250px">{{__('dash.number_people')}}</th>
-                    <th class="min-w-150px">{{__('dash.created_at')}}</th>
-                    <th class="min-w-70px no-export">{{__('dash.actions')}}</th>
+                    <th class="min-w-250px">{{__('dash.image')}}</th>
+                    <th class="min-w-250px">{{__('dash.name')}}</th>
                 </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                 @foreach($data as $record)
                     <tr>
                         <td>
-                            {{$record->email}}
+                            <div class="symbol symbol-50px">
+                                <img src="{{asset($record->image)}}" alt="" class="object-cover">
+                            </div>
                         </td>
                         <td>
-                            {{$record->phone}}
+                            {{$record->{"name_" .  getLocale()} }}
                         </td>
-                        <td>
-                            {{$record->number_people}}
-                        </td>
-                        <td>{{$record->created_at}}</td>
-                        <x-action-btn.reserv :record="$record"/>
+
+                        <x-action-btn.locations :record="$record"/>
                     </tr>
                 @endforeach
                 </tbody>

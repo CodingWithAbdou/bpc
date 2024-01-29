@@ -63,7 +63,7 @@
                         @foreach($setting->where('category', 1) as $data)
                             @if($data->type_id == 1)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='tr') "TR" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "En"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid" name="{{$data->setting_key}}"
                                                id="{{$data->setting_key}}" value="{{$data->setting_value}}" autocomplete="off">
@@ -71,7 +71,7 @@
                                 </div>
                             @elseif($data->type_id == 3)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='tr') "TR" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "En"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <textarea class="form-control form-control-solid" name="{{$data->setting_key}}" rows="4"
                                                   id="{{$data->setting_key}}" data-kt-autosize="true" maxlength="{{$data->max}}">{{$data->setting_value}}</textarea>
@@ -79,7 +79,7 @@
                                 </div>
                             @elseif($data->type_id == 2)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='tr') "TR" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "En"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url({{asset($data->setting_value)?'':asset('dashboard_assets/media/svg/files/blank-image.svg')}})">
                                             <!--begin::Preview existing avatar-->
@@ -112,7 +112,7 @@
                             @else
                                 @if($data->setting_key == 'pdf_file')
                                 <div class="row mb-10 align-items-center">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
@@ -135,7 +135,7 @@
                         @foreach($setting->where('category', 2) as $data)
                             @if($data->type_id == 1)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid ltr" name="{{$data->setting_key}}"
                                                id="{{$data->setting_key}}" value="{{$data->setting_value}}" autocomplete="off">
@@ -143,7 +143,7 @@
                                 </div>
                             @elseif($data->type_id == 3)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <textarea class="form-control form-control-solid" name="{{$data->setting_key}}" rows="5"
                                                   id="{{$data->setting_key}}" data-kt-autosize="true">{{$data->setting_value}}</textarea>
@@ -156,7 +156,7 @@
                         @foreach($setting->where('category', 3) as $data)
                             @if($data->type_id == 1)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else if</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid ltr" name="{{$data->setting_key}}"
                                                id="{{$data->setting_key}}" value="{{$data->setting_value}}" autocomplete="off">
@@ -164,7 +164,7 @@
                                 </div>
                             @elseif($data->type_id == 3)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else if</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <textarea class="form-control form-control-solid" name="{{$data->setting_key}}" rows="5"
                                                   id="{{$data->setting_key}}" data-kt-autosize="true">{{$data->setting_value}}</textarea>
@@ -177,7 +177,7 @@
                         @foreach($setting->where('category', 4) as $data)
                             @if($data->type_id == 1)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid" name="{{$data->setting_key}}"
                                                id="{{$data->setting_key}}" value="{{$data->setting_value}}" autocomplete="off">
@@ -185,7 +185,7 @@
                                 </div>
                             @elseif($data->type_id == 3)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <textarea class="form-control form-control-solid" name="{{$data->setting_key}}" rows="5"
                                                   id="{{$data->setting_key}}" data-kt-autosize="true">{{$data->setting_value}}</textarea>
@@ -198,7 +198,7 @@
                         @foreach($setting->where('category', 5) as $data)
                             @if($data->type_id == 1)
                                 <div class="row mb-10">
-                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN" @else @endif</label>
+                                    <label class="col-lg-3 col-form-label text-lg-end">{{$data->{'title_'.app()->getLocale()} }} @if(last(explode('_', $data->setting_key))=='ar') "AR" @elseif(last(explode('_', $data->setting_key))=='en') "EN"  @elseif(last(explode('_', $data->setting_key))=='fr') "Fr" @else  @endif</label>
                                     <div class="col-lg-9 col-xl-4">
                                         <input type="text" class="form-control form-control-solid" name="{{$data->setting_key}}"
                                                id="{{$data->setting_key}}" value="{{$data->setting_value}}" autocomplete="off">

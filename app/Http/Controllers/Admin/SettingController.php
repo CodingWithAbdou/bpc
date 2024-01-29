@@ -25,20 +25,21 @@ class SettingController extends Controller
         $this->validate($request, [
             'website_name_ar' => 'required',
             'website_name_en' => 'required',
+            'website_name_fr' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
-            'Headquarters_one' => 'required',
-            'Headquarters_two' => 'required',
-            'branch_one' => 'required',
-            'branch_two' => 'required',
+            'description_fr' => 'required',
             'keywords' => 'required',
             'logo' => 'nullable|max:'.getMaxSize().'|mimes:'.acceptImageType(0),
+            'second_logo' => 'nullable|max:'.getMaxSize().'|mimes:'.acceptImageType(0),
             'favicon' => 'nullable|max:'.getMaxSize().'|mimes:'.acceptImageType(0),
-            'email' => 'required|email:rfc,dns',
-            'address_ar' => 'required',
-            'address_en' => 'required',
             'footer_description_ar' => 'required',
             'footer_description_en' => 'required',
+            'footer_description_fr' => 'required',
+            'phone' => 'required',
+            'address_ar' => 'required',
+            'address_en' => 'required',
+            'address_fr' => 'required',
         ]);
 
 

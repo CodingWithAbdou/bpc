@@ -43,5 +43,8 @@ return [
     "People" => "Peuples" ,
     "Subsctibe and be notifed about new locations" => "Abonnez-vous et soyez informé des nouveaux emplacements" ,
     "check the input" => "vérifier l'entrée" ,
+    "application_success" => "envoyé avec succès",
+    "Ok got it" => "d'accord" ,
+    "copyright" => "Tous droits réservés. &copy; Droits d'auteur par Oussama Benabila.",
 
 ];

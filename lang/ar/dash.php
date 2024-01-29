@@ -190,5 +190,7 @@ return [
     'admins' => 'مدير',
     'clients' => 'عميل',
     'client' => 'العملاء',
+    'locations' => 'موقع',
+    'number_people' => 'عدد الاشخاص',
 
 ];

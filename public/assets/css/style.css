@@ -119,11 +119,14 @@ textarea.materialize-textarea {
     left: 0;
 }
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
-    background: var(--sky);
-    font-family: var(--ff-Al-Jazeera);
+    background: var(--sky) !important;
+    font-family: var(--ff-Al-Jazeera) !important;
 }
 .ar .arrow {
     transform: rotate(180deg);
+}
+.ar .form-section .btn-request {
+    font-family: var(--ff-Al-Jazeera);
 }
 ul:not(.browser-default) {
     padding-inline-start: 0rem;
@@ -229,7 +232,7 @@ body {
 */
 
 .form-section {
-    background-size: cover;
+    background-size: cover !important;
     color: var(--white);
     margin-inline: auto;
     padding-block: 2rem;
@@ -241,6 +244,12 @@ body {
 .form-section .head-title p {
     font-family: var(--ff-montserrat);
 }
+.select-dropdown li img {
+    border-radius: 6px;
+}
+.ar .select-dropdown li img {
+    float: left;
+}
 .frist-section {
     background: var(--white);
     border-radius: 40px;
@@ -251,7 +260,11 @@ body {
     height: 80px;
     /* justify-content: center; */
 }
-
+@media (min-width: 768px) {
+    .frist-section > div:first-of-type {
+        width: 30%;
+    }
+}
 .bar {
     width: 0.5px !important;
     height: 40%;
@@ -374,7 +387,7 @@ input::placeholder {
     color: var(--white);
     background: var(--sky);
     border-radius: 30px;
-    padding: 1rem 3rem;
+    padding: 1rem 3rem 1.25rem;
     box-shadow: none;
     font-family: var(--ff-Nexa-Thin);
     font-size: 1.5rem;
@@ -382,6 +395,7 @@ input::placeholder {
     margin-top: 1rem;
     transition: var(--transition-1);
     border: 1px solid var(--sky);
+    font-family: var(--ff-montserrat);
 }
 .form-section .btn-request:hover {
     background-color: transparent;
@@ -607,4 +621,34 @@ footer > .container > div:last-of-type > div:last-of-type img:nth-child(5) {
         display: block;
         cursor: pointer;
     }
+}
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input.valid[type="text"]:not(.browser-default),
+input.valid[type="text"]:not(.browser-default):focus,
+input.valid[type="password"]:not(.browser-default),
+input.valid[type="password"]:not(.browser-default):focus,
+input.valid[type="email"]:not(.browser-default),
+input.valid[type="email"]:not(.browser-default):focus,
+input.valid[type="url"]:not(.browser-default),
+input.valid[type="url"]:not(.browser-default):focus,
+input.valid[type="time"]:not(.browser-default),
+input.valid[type="time"]:not(.browser-default):focus,
+input.valid[type="date"]:not(.browser-default),
+input.valid[type="date"]:not(.browser-default):focus,
+input.valid[type="datetime"]:not(.browser-default),
+input.valid[type="datetime"]:not(.browser-default):focus,
+input.valid[type="datetime-local"]:not(.browser-default),
+input.valid[type="datetime-local"]:not(.browser-default):focus,
+input.valid[type="tel"]:not(.browser-default),
+input.valid[type="tel"]:not(.browser-default):focus,
+input.valid[type="number"]:not(.browser-default),
+input.valid[type="number"]:not(.browser-default):focus,
+input.valid[type="search"]:not(.browser-default),
+input.valid[type="search"]:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid > input.select-dropdown {
+    border-bottom: none;
+    box-shadow: none;
 }

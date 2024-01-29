@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
-    protected $fillable = ['setting_key', 'setting_value', 'title_ar', 'title_en', 'type_id', 'category',
+    protected $fillable = ['setting_key', 'setting_value', 'title_ar' , 'title_fr', 'title_en', 'type_id', 'category',
     'order_no', 'is_hidden'];
 
     public $timestamps = false;

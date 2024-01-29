@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\HomeDashController;
+use App\Http\Controllers\Admin\LocationsController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReservationController;
@@ -62,6 +63,16 @@ Route::group([ 'prefix' => 'admin' , 'middleware' => 'admin'] , function () {
 
 
     //reservations
-    Route::get('reservations', [ReservationController::class, 'index'])->name('dashboard.reservations.index');
+    Route::get('reservations/registered', [ReservationController::class, 'registered'])->name('dashboard.reservations_registered.index');
+    Route::get('reservations/no_registered', [ReservationController::class, 'noRegistered'])->name('dashboard.reservations__no_registered.index');
     Route::delete('reservations/{obj}/delete', [ReservationController::class, 'destroy'])->name('dashboard.reservations.destroy');
+
+    // Locations
+    Route::get('locations', [LocationsController::class, 'index'])->name('dashboard.locations.index');
+    Route::get('locations/create', [LocationsController::class, 'create'])->name('dashboard.locations.create');
+    Route::post('locations/store', [LocationsController::class, 'store'])->name('dashboard.locations.store');
+    Route::get('locations/{obj}/edit', [LocationsController::class, 'edit'])->name('dashboard.locations.edit');
+    Route::post('locations/{obj}/update', [LocationsController::class, 'update'])->name('dashboard.locations.update');
+    Route::delete('locations/{obj}/delete', [LocationsController::class, 'destroy'])->name('dashboard.locations.destroy');
+
 });

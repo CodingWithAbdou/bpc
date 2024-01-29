@@ -17,9 +17,16 @@ class Reservation extends Model
         "phone" ,
         "email" ,
         "number_people" ,
-        "rome" ,
+        "room" ,
         "delivery" ,
         "flight_no" ,
         "arrival_time" ,
+        "auth" ,
     ];
+
+    public function peoples()
+    {
+        return $this->hasMany(People::class);
+    }
+
 }

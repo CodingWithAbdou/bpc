@@ -43,4 +43,8 @@ return [
     "People" => "الأشخاص" ,
     "Subsctibe and be notifed about new locations" => "اشترك وسيتم إعلامك بالمواقع الجديدة",
     "check the input" => "تحقق من المدخلات" ,
+    "application_success" => "تم الارسال بنجاح" ,
+    "Ok got it" => "تم" ,
+    "copyright" => "جميع الحقوق محفوظة. &copy; حقوق النشر بواسطة أسامة بن عبيلا.",
+
 ];

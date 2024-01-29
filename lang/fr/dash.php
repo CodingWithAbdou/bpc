@@ -117,4 +117,6 @@ return [
     'admins' => 'Administrateurs',
     'clients' => 'Clients',
     'client' => 'Client',
+    'number_people' => 'Nombre de personnes',
+
     ];

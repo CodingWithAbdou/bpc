@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="{{\App\Models\Setting::where('setting_key', 'keywords')->first()->setting_value}}" />
         <meta name="title" content="{{\App\Models\Setting::where('setting_key', 'website_name_' . getLocale() )->first()->setting_value}}" />
-        <meta name="description" content="{{\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value}}" />
+        <meta name="description" content="{{\App\Models\Setting::where('setting_key', 'description_' .  getLocale() )->first()->setting_value}}" />
         <meta
             name="author"
             content="Khaldi Abdou  @https://khamsat.com/user/khaldi_abdou" />
@@ -20,8 +20,12 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }} " />
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }} " />
         <link rel="shortcut icon" href="{{asset(\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value)}}" />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+      @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
         <title>{{\App\Models\Setting::where('setting_key', 'website_name_' . getLocale() )->first()->setting_value}} </title>
@@ -33,16 +37,16 @@
     @else
         <body class="en">
     @endif
-        <div class="navigation">
-            <div class="container">
-                <div class="logo">
+        <div class="navigation"  >
+            <div class="container" >
+                <div class="logo animate__animated  {{getLocale()  == 'ar'? 'animate__fadeInRight ' : 'animate__fadeInLeft' }}">
                     <img src="{{ asset('assets/images/logo.svg') }} " height="60" alt="" />
                 </div>
                 <div class="menu">
                     <img src="{{ asset('assets/images/menu.svg') }} " width="30" alt="" />
                 </div>
-                <div class="nav-info">
-                    <div class="lang">
+                <div class="nav-info animate__animated {{getLocale()  == 'ar'? 'animate__fadeInLeft' : 'animate__fadeInRight ' }}">
+                    <div class="lang" >
                         <a href="{{route('lang.switchLang', 'ar')}}">عربــي</a>
                         <a href="{{route('lang.switchLang', 'fr')}}">frensh</a>
                         <a href="{{route('lang.switchLang', 'en')}}">english</a>
@@ -68,11 +72,11 @@
                 style="background: url('{{ asset('assets/images/background.png') }}')">
                 <div class="container">
                     <div class="head-title">
-                        <h1>{{__('front.Canturk Hotel Resrvation')}}</h1>
-                        <p>{{__('front.Request your reservation now')}}</p>
+                        <h1 class="animate__animated animate__fadeInDown">{{__('front.Canturk Hotel Resrvation')}}</h1>
+                        <p  class="animate__animated animate__fadeInUp">{{__('front.Request your reservation now')}}</p>
                     </div>
                     <form action="{{route('form')}}" id="data_form">
-                        <div class="frist-section">
+                        <div class="frist-section " >
                             <div class="input-field" >
                                 <select name="location">
                                     <option value="">{{__('front.Choose Location')}}</option>
@@ -109,8 +113,8 @@
                                     class="datepicker" />
                             </div>
                         </div>
-                        <div class="secode-section">
-                            <div class="">
+                        <div class="secode-section" >
+                            <div class="animate__animated   {{getLocale()  == 'ar'? 'animate__fadeInRight ' : 'animate__fadeInLeft' }}">
                                 <label for="phone">{{__('front.Phone')}}</label>
                                 <input
                                     placeholder="+213 560 40 32 21"
@@ -119,7 +123,7 @@
                                     type="text"
                                     class="validate" />
                             </div>
-                            <div class="">
+                            <div class=" animate__animated   {{getLocale()  == 'ar'? 'animate__fadeInLeft  ' : 'animate__fadeInRight' }}">
                                 <label for="email">{{__('front.E-mail')}}</label>
                                 <input
                                     placeholder="Info@Canturcktourousim.com"
@@ -128,7 +132,7 @@
                                     type="text"
                                     class="validate" />
                             </div>
-                            <div class="last">
+                            <div class="last animate__animated   {{getLocale()  == 'ar'? 'animate__fadeInRight ' : 'animate__fadeInLeft' }}">
                                 <label for="people">{{__('front.People')}}</label>
                                 <input
                                     placeholder="{{__('front.number of persons')}}"
@@ -137,7 +141,7 @@
                                     type="text"
                                     class="validate" />
                             </div>
-                            <div class="last">
+                            <div class="last animate__animated   {{getLocale()  == 'ar'? 'animate__fadeInLeft  ' : 'animate__fadeInRight' }}">
                                 <label for="room">{{__('front.Room')}}</label>
                                 <input
                                     placeholder="{{__('front.number of rooms')}}"
@@ -147,8 +151,8 @@
                                     class="validate" />
                             </div>
                         </div>
-                        <div id="persons_section"></div>
-                        <div class="last-section">
+                        <div id="persons_section" class=""></div>
+                        <div class="last-section animate__animated  animate__zoomIn" >
                             <div>{{ __('front.They need a transfer from the airport?') }}</div>
 
                             <div class="bar"></div>
@@ -196,14 +200,17 @@
                                     class="validate" />
                             </div>
                         </div>
-                        <button type="submit" class="btn-request"> {{__('front.Request')}} </button>
+                        <button  type="submit" class="btn-request animate__animated animate__zoomInUp">
+                            <span class="base">{{__('front.Request')}} </span>
+                            <span class="second">{{__('front.wait')}} </span>
+                        </button>
                     </form>
                 </div>
             </section>
             <section class="subscribe">
                 <div class="container">
-                    <div>{{__('front.Subsctibe and be notifed about new locations')}}</div>
-                    <div class="input-field inline email">
+                    <div >{{__('front.Subsctibe and be notifed about new locations')}}</div>
+                    <div  class="input-field inline email">
                         <input
                             id="email_inline"
                             type="email"
@@ -268,16 +275,14 @@
                 {!! __("front.copyright") !!} <span id="year"></span>
             </div>
         </div>
-        <!-- <input type="text" class="datepicker" /> -->
     </body>
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }} "></script>
     <script src="{{ asset('assets/js/materialize.min.js') }} "></script>
-    <script src="{{ asset('assets/js/script.js') }} "></script>
     <x-js.form />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const SwalModal = (text ,type ,url) => {
-            swal.fire({
+            Swal.fire({
                 text: text,
                 icon: type,
                 confirmButtonText: '{{__('front.Ok got it')}}',
@@ -292,14 +297,11 @@
                     window.location = url;
             });
         };
-    </script>
-    <script>
-
 
         $(document).on('submit', '#data_form', function(e){
             e.preventDefault();
             let form = $(this);
-            loaderStart(form.find('button[type="submit"]'));
+            showWait(true);
             HideValidationError(form);
             let action = $(this).attr('action');
             $.ajax({
@@ -316,10 +318,10 @@
                     }else{
                         SwalModal(response.msg, 'errors');
                     }
-                    // form.trigger('reset');
                     form.find(':input:not(.datepicker)').val('');
                     form.find('select').val(null).trigger('change');
-                    loaderEnd(form.find('button[type="submit"]'));
+                    showWait(false);
+
                 },
                 error: function (response) {
                     let array= []
@@ -335,9 +337,22 @@
                         confirmButtonColor: '#4ca1af',
                         confirmButtonText: '{{__('dash.ok')}}',
                     })
-                    loaderEnd(form.find('button[type="submit"]'));
+                    showWait(false);
+
                 }
             });
+
+            function showWait(status) {
+                if(status) {
+                    document.querySelector('.base').classList.add('loading')
+                    document.querySelector('.second').classList.add('loading')
+                }else {
+                    document.querySelector('.base').classList.remove('loading')
+                    document.querySelector('.second').classList.remove('loading')
+                }
+            }
+
         })
     </script>
+
 </html>

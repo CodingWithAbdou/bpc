@@ -10,8 +10,6 @@ class HomeController extends Controller
     public function index()
     {
         $locations = Location::orderBy( 'created_at', 'desc')->get();
-
-
         return view('home' , compact('locations'));
     }
 }

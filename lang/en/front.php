@@ -47,6 +47,6 @@ return [
     "application_success" => "Application Success" ,
     "Ok got it" => "Ok" ,
     "copyright" => "All rights reserved . &copy;  Copyright by Oussama Benabila." ,
-    "" => "" ,
+    "wait" => "Wait ..." ,
     "" => "" ,
 ];

@@ -46,5 +46,6 @@ return [
     "application_success" => "envoyé avec succès",
     "Ok got it" => "d'accord" ,
     "copyright" => "Tous droits réservés. &copy; Droits d'auteur par Oussama Benabila.",
+    "wait" => "attendez ..." ,
 
 ];

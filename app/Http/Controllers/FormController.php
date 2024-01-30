@@ -58,7 +58,7 @@ class FormController extends Controller
             }
         }
 
-        $to = 'abdelhamidesadek@gmail.com';
+        $to = 'reservation@canturktourism.com';
         $from = [
             'email' => config('mail.from.address'),
             'name' => config('mail.from.name'),
@@ -76,11 +76,6 @@ class FormController extends Controller
                 return response()->json(compact('status', 'msg'));
             }
         }
-
-
-
-
-
 
         $status = true;
         $msg = __('front.application_success');

@@ -58,7 +58,7 @@ class FormController extends Controller
             }
         }
 
-        $to = 'reservation@canturktourism.com';
+        $to = 'abdelhamidesadek@gmail.com';
         $from = [
             'email' => config('mail.from.address'),
             'name' => config('mail.from.name'),

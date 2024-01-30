@@ -6,7 +6,9 @@
 .second.loading {
     display: block;
 }
-
+.navigation ,.form-section {
+    overflow: hidden;
+}
 /*
 ****
 * Global

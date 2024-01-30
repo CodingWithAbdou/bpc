@@ -162,7 +162,7 @@
                                 <div>
                                     <label>
                                         <input
-                                            class="with-gap"
+                                            class="with-gap checkbox"
                                             name="delivery"
                                             type="radio"
                                             checked
@@ -173,7 +173,7 @@
                                 <div>
                                     <label>
                                         <input
-                                            class="with-gap"
+                                            class="with-gap checkbox"
                                             name="delivery"
                                             type="radio" />
                                         <span>{{__('front.No')}}</span>
@@ -319,7 +319,7 @@
                     }else{
                         SwalModal(response.msg, 'errors');
                     }
-                    form.find(':input:not(.datepicker)').val('');
+                    form.find(':input:not(.datepicker):not(.checkbox)').val('');
                     form.find('select').val(null).trigger('change');
                     showWait(false);
 

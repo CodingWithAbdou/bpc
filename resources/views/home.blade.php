@@ -20,6 +20,7 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }} " />
         <link rel="stylesheet" href="{{ asset('assets/css/materialize.min.css') }} " />
+        <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }} " />
         <link rel="shortcut icon" href="{{asset(\App\Models\Setting::where('setting_key', 'favicon')->first()->setting_value)}}" />
         <link
         rel="stylesheet"

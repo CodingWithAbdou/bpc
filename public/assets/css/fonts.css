@@ -1,0 +1,41 @@
+@font-face {
+    src: url(fonts/Montserrat-bold.ttf);
+    font-family: "Montserrat";
+    font-weight: "bold";
+}
+
+@font-face {
+    src: url(fonts/Montserrat-Medium.ttf);
+    font-family: "Montserrat";
+    font-weight: "500";
+}
+
+@font-face {
+    src: url(fonts/Montserrat-Light.ttf);
+    font-family: "Montserrat";
+    font-weight: "300";
+}
+
+@font-face {
+    src: url(fonts/PlayfairDisplay-Bold.ttf);
+    font-family: "PlayfairDisplay";
+    font-weight: "bold";
+}
+
+@font-face {
+    src: url(fonts/PlayfairDisplay-VariableFont_wght.ttf);
+    font-family: "PlayfairDisplay";
+    font-weight: "500";
+}
+
+@font-face {
+    src: url(fonts/Al-Jazeera-Arabic-Light.ttf);
+    font-family: "Al-Jazeera-Arabic";
+    font-weight: "500";
+}
+
+@font-face {
+    src: url(fonts/Nexa-Thin.ttf);
+    font-family: "Nexa-Thin";
+    font-weight: "500";
+}

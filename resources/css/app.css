@@ -280,7 +280,8 @@ body {
     color: var(--white);
 }
 input::placeholder {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* .secode-section > div > input[type="text"]:not(.browser-default):nth-child(3), */
@@ -583,6 +584,7 @@ footer > .container > div:last-of-type > div:last-of-type img:nth-child(5) {
         height: 0;
         overflow: hidden;
         transition: var(--transition-1);
+        z-index: 999;
     }
     .navigation .nav-info.active {
         height: fit-content;
@@ -621,4 +623,28 @@ textarea.materialize-textarea.valid:focus,
 .select-wrapper.valid > input.select-dropdown {
     border-bottom: none;
     box-shadow: none;
+}
+
+.bar_last {
+    display: none;
+}
+#dateDifference {
+    color: var(--text);
+    opacity: 0;
+    transition: var(--transition-1);
+}
+#dateDifference.show {
+    opacity: 1;
+}
+
+.days {
+    color: var(--sky);
+    font-weight: bold;
+
+}
+.bar_last.show {
+    display: block;
+}
+.hide {
+    display: none;
 }

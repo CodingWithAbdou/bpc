@@ -25,16 +25,12 @@ class FormController extends Controller
             'number_passport' => 'required',
             'nationality' => 'required',
             'delivery' => 'required',
-            'flight_no' => 'required',
-            'arrival_time' => 'required',
+            'flight_no' => $request->delivery == '1' ? 'required' : 'nullable',
+            'arrival_time' => $request->delivery == '1' ? 'required' : 'nullable',
         ]);
 
         $inputs = $request->all();
-        if($request->delivery == 'on') {
-            $inputs['delivery'] = 1;
-        }else {
-            $inputs['delivery'] = 0;
-        }
+
         if (auth()->check()) {
             $inputs['auth'] = 1;
         }else {

@@ -5468,7 +5468,7 @@ textarea.materialize-textarea + label:after,
     position: relative;
     min-height: 18px;
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.54);
 }
 .input-field .helper-text::after {
@@ -7631,7 +7631,8 @@ input[type="search"]:not(.browser-default),
 textarea.materialize-textarea {
     border-bottom: none;
     color: #3b4c5d;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
     margin: 0;
 }
 input:not([type]):focus:not([readonly]),

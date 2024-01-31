@@ -19,12 +19,23 @@ $(document).ready(function () {
 
     const peopleInput = document.getElementById("people");
     const roomInput = document.getElementById("room");
+    const phoneInput = document.getElementById("phone");
+    let ages = document.querySelectorAll('.age_input')
 
     const personsSection = document.getElementById("persons_section");
     peopleInput.addEventListener("focus", focusEvent);
     peopleInput.addEventListener("blur", blurEvent);
     peopleInput.addEventListener("input", validateNumericInput);
     roomInput.addEventListener("input", validateNumericInput);
+    phoneInput.addEventListener("input", validateNumericInput);
+
+
+
+    function validateNumericInput() {
+        peopleInput.value = peopleInput.value.replace(/[^0-9]/g, "");
+        roomInput.value = roomInput.value.replace(/[^0-9]/g, "");
+        phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "");
+    }
 
     function focusEvent() {
         number = 0;
@@ -44,13 +55,14 @@ $(document).ready(function () {
                 personsSection.classList.add('animate__animated', 'animate__fadeInLeft')
             }
 
+
         }
 
         for (let i = 0; i < loopValue; i++) {
             ++number;
-            let html_row_ar = `<div class="theard-section"><div class="label">شخص ${number}</div><div><div class="full-name"><input placeholder="الاسم واللقب" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="العمر" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="رقم جواز السفر" id="passport" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="الجنسية" id="nationality" name="nationality[]" type="text" class="validate"></div></div></div>`;
-            let html_row_en = `<div class="theard-section"><div class="label">person ${number}</div><div><div class="full-name"><input placeholder="name and surname" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="age" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="N.passport" id="passport" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="nationality" id="nationality" name="nationality[]" type="text" class="validate"></div></div></div>`;
-            let html_row_fr = `<div class="theard-section"><div class="label">personne ${number}</div><div><div class="full-name"><input placeholder="Nom et Prénom" name='fullname[]' id="fullname" type="text" class="validate"></div><div class="age"><input placeholder="âge" name="age[]" id="age" type="text" class="validate"></div><div class="input-field passport"><input placeholder="N.passeport" id="passport" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="nationalité" id="nationality" name="nationality[]" type="text" class="validate"></div></div></div>`;
+            let html_row_ar = `<div class="theard-section"><div class="label">شخص ${number}</div><div><div class="full-name"><input placeholder="الاسم واللقب" name='fullname[]' id="fullname-${number}" type="text" class="validate"></div><div class="age"><input placeholder="العمر" name="age[]" id="age-${number}" type="text" class="validate age_input"></div><div class="input-field passport"><input placeholder="رقم جواز السفر" id="passport-${number}" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="الجنسية" id="nationality-${number}" name="nationality[]" type="text" class="validate nationality"></div></div></div>`;
+            let html_row_en = `<div class="theard-section"><div class="label">person ${number}</div><div><div class="full-name"><input placeholder="name and surname" name='fullname[]' id="fullname-${number}" type="text" class="validate"></div><div class="age"><input placeholder="age" name="age[]" id="age-${number}" type="text" class="validate age_input"></div><div class="input-field passport"><input placeholder="N.passport" id="passport-${number}" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="nationality" id="nationality-${number}" name="nationality[]" type="text" class="validate nationality"></div></div></div>`;
+            let html_row_fr = `<div class="theard-section"><div class="label">personne ${number}</div><div><div class="full-name"><input placeholder="Nom et Prénom" name='fullname[]' id="fullname-${number}" type="text" class="validate"></div><div class="age"><input placeholder="âge" name="age[]" id="age-${number}" type="text" class="validate age_input"></div><div class="input-field passport"><input placeholder="N.passeport" id="passport-${number}" type="text" class="validate" name="number_passport[]"></div><div class="nationality"><input placeholder="nationalité" id="nationality-${number}" name="nationality[]" type="text" class="validate nationality"></div></div></div>`;
             if (document.body.classList.contains("ar")) {
                 personsSection.innerHTML += html_row_ar;
             } else if (document.body.classList.contains("en")) {
@@ -58,14 +70,72 @@ $(document).ready(function () {
             } else {
                 personsSection.innerHTML += html_row_fr;
             }
+
+            document.querySelectorAll('.age_input').forEach(age =>{
+                age.addEventListener("input", ()=> {
+                    age.value = age.value.replace(/[^0-9]/g, "");
+                });
+            })
         }
     }
-    function validateNumericInput() {
-        peopleInput.value = peopleInput.value.replace(/[^0-9]/g, "");
-        roomInput.value = roomInput.value.replace(/[^0-9]/g, "");
-    }
+
     let currentYear = new Date().getFullYear();
 
     document.getElementById("year").innerHTML = currentYear;
+
+    function getCurrentDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    checkin.min = getCurrentDate();
+    checkout.min = getCurrentDate();
+
+    checkin.addEventListener('input', calculateDateDifference);
+    checkout.addEventListener('input', calculateDateDifference);
+
+    function calculateDateDifference() {
+
+        const startDateObj = new Date(checkin.value);
+        const endDateObj = new Date(checkout.value);
+        const timeDifference = endDateObj - startDateObj;
+
+        // Calculate the difference in days
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        console.log(daysDifference)
+        if( !isNaN(daysDifference) ) {
+            const dateDifferenceElement = document.getElementById('dateDifference');
+            document.querySelector('.days').innerHTML =  (daysDifference)
+            if(!dateDifferenceElement.classList.contains('show')) {
+                dateDifferenceElement.classList.add('show')
+                document.querySelector('.bar_last').classList.add('show')
+            }
+
+        }
+        // Display the result
+    }
+
+
+    const yes = document.getElementById('yes')
+    const no = document.getElementById('no')
+    yes.addEventListener('change' , ()=> {
+        if(!document.querySelector('.flight_div').classList.contains('hide'))return
+        document.querySelectorAll('.bar.delivery')[0].classList.remove('hide')
+        document.querySelectorAll('.bar.delivery')[1].classList.remove('hide')
+        document.querySelector('.flight_div').classList.remove('hide')
+        document.querySelector('.arrival_div').classList.remove('hide')
+    })
+    no.addEventListener('change' , ()=> {
+        if(document.querySelector('.flight_div').classList.contains('hide'))return
+        document.querySelectorAll('.bar.delivery')[0].classList.add('hide')
+        document.querySelectorAll('.bar.delivery')[1].classList.add('hide')
+        document.querySelector('.flight_div').classList.add('hide')
+        document.querySelector('.arrival_div').classList.add('hide')
+    })
 });
 

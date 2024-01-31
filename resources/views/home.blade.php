@@ -102,7 +102,9 @@
                                     type="text"
                                     placeholder="{{__('front.check in')}}"
                                     name="checkin"
-                                    class="datepicker" />
+                                    onfocus="(this.type='date')"
+                                    onblur="(this.type='text')"
+                                    id="checkin" />
                             </div>
                             <div class="bar"></div>
 
@@ -110,8 +112,15 @@
                                 <input
                                     type="text"
                                     placeholder="{{__('front.check out')}}"
+                                    onfocus="(this.type='date')"
+                                    onblur="(this.type='text')"
                                     name="checkout"
-                                    class="datepicker" />
+                                    id="checkout" />
+                            </div>
+                            <div class="bar bar_last"></div>
+                            <div id="dateDifference">
+                                <span class="days"></span>
+                                {{__('front.day')}}
                             </div>
                         </div>
                         <div class="secode-section" >
@@ -156,15 +165,17 @@
                         <div class="last-section animate__animated  animate__zoomIn" >
                             <div>{{ __('front.They need a transfer from the airport?') }}</div>
 
-                            <div class="bar"></div>
+                            <div class="bar "></div>
 
                             <div>
                                 <div>
                                     <label>
                                         <input
                                             class="with-gap checkbox"
+                                            id="yes"
                                             name="delivery"
                                             type="radio"
+                                            value="1"
                                             checked
                                             />
                                         <span>{{__('front.Yes')}}</span>
@@ -174,15 +185,18 @@
                                     <label>
                                         <input
                                             class="with-gap checkbox"
+                                            id="no"
                                             name="delivery"
+                                            value="0"
+
                                             type="radio" />
                                         <span>{{__('front.No')}}</span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="bar"></div>
+                            <div class="bar delivery"></div>
 
-                            <div class="">
+                            <div class="flight_div">
                                 <input
                                     placeholder="{{__('front.Flight No')}}"
                                     id="flight"
@@ -190,9 +204,9 @@
                                     type="text"
                                     class="validate" />
                             </div>
-                            <div class="bar"></div>
+                            <div class="bar delivery"></div>
 
-                            <div class="">
+                            <div class="arrival_div">
                                 <input
                                     placeholder="{{__('front.Arrival Time')}}"
                                     id="arrival"

@@ -30,6 +30,10 @@
                         </thead>
                         <tbody class="fw-bold text-gray-800">
                             <tr class="p-4">
+                                <td class="ps-3">{{__('dash.clients')}}</td>
+                                <td>{{$record->auth}}</td>
+                            </tr>
+                            <tr class="p-4">
                                 <td class="ps-3">{{__('front.Choose Location')}}</td>
                                 <td>{{$record->location}}</td>
                             </tr>

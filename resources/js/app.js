@@ -93,21 +93,53 @@ $(document).ready(function () {
 
     const checkin = document.getElementById('checkin');
     const checkout = document.getElementById('checkout');
+    let checkInValue = ''
+    let checkOutValue = ''
     checkin.min = getCurrentDate();
     checkout.min = getCurrentDate();
 
     checkin.addEventListener('input', calculateDateDifference);
+    checkin.addEventListener('blur', ()=> {
+        const year = checkin.value.split('-')[0];
+        const month = checkin.value.split('-')[1];
+        const day = checkin.value.split('-')[2];
+        checkin.value = `${month}-${day}-${year}`
+        checkInValue =  checkin.value
+
+    });
+    checkin.addEventListener('focus', ()=> {
+        const month = checkInValue.split('-')[0];
+        const day = checkInValue.split('-')[1];
+        const year = checkInValue.split('-')[2];
+        if(day > 0) {
+            checkin.value = `${year}-${month}-${day}`
+        }
+    });
     checkout.addEventListener('input', calculateDateDifference);
+    checkout.addEventListener('blur', ()=> {
+        const year = checkout.value.split('-')[0];
+        const month = checkout.value.split('-')[1];
+        const day = checkout.value.split('-')[2];
+        checkout.value = `${month}-${day}-${year}`
+        checkOutValue =  checkout.value
+
+    });
+    checkout.addEventListener('focus', ()=> {
+        const month = checkOutValue.split('-')[0];
+        const day = checkOutValue.split('-')[1];
+        const year = checkOutValue.split('-')[2];
+        if(day > 0) {
+            checkout.value = `${year}-${month}-${day}`
+        }
+    });
 
     function calculateDateDifference() {
-
         const startDateObj = new Date(checkin.value);
         const endDateObj = new Date(checkout.value);
         const timeDifference = endDateObj - startDateObj;
 
         // Calculate the difference in days
         const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        console.log(daysDifference)
         if( !isNaN(daysDifference) ) {
             const dateDifferenceElement = document.getElementById('dateDifference');
             document.querySelector('.days').innerHTML =  (daysDifference)
@@ -136,6 +168,12 @@ $(document).ready(function () {
         document.querySelectorAll('.bar.delivery')[1].classList.add('hide')
         document.querySelector('.flight_div').classList.add('hide')
         document.querySelector('.arrival_div').classList.add('hide')
+    })
+
+
+
+    document.querySelector('.btn_profile').addEventListener('click' , ()=> {
+        document.querySelector('.list').classList.toggle('show')
     })
 });
 

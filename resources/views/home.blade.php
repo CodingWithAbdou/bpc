@@ -54,12 +54,24 @@
                     </div>
                     <div class="auth">
                         @auth
-                            <a href="{{route('dashboard.logout')}}">{{__('dash.sign out')}}</a>
+                        <div class="menu_profile">
+                            <div class="btn_profile" style="background:url('{{asset(auth()->user()->image)}}'); ">
+                            </div>
+                            <div class="list" style="{{getLocale()=='ar' ? 'left: 0;' : 'right: 0;'}}">
+                                <div class="first_list">
+                                    <div class="btn_profile" style="background:url('{{asset(auth()->user()->image)}}"></div>
+                                    <h6>{{auth()->user()->name}} </h6>
+                                </div >
+                                <div class="last_list">
+                                    <a style="display:block;" href="{{route('dashboard.logout')}}">{{__('dash.sign out')}}</a>
+                                </div>
+                            </div>
+                        </div>
                         @else
                             <a href="{{route('home.login.index')}}">{{__('front.Log In')}}</a>
                             <a href="{{route('home')}}">{{__('front.Sign Up')}}</a>
-                            <img src="{{ asset('assets/images/serch.svg') }} " alt="" />
                         @endauth
+                        <img src="{{ asset('assets/images/serch.svg') }} " alt="" />
                     </div>
                     <div class="serch">
                     </div>

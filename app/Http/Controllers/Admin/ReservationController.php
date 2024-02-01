@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProjectModel;
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -22,13 +23,15 @@ class ReservationController extends Controller
      */
     public function registered()
     {
-        $data = Reservation::orderBy('created_at', 'desc')->where("auth" , "1")->get();
-        return view('admin.reservations.index' , compact('data'));
+        $data = Reservation::orderBy('created_at', 'desc')->whereNotNull("auth")->get();
+        $auth = true;
+        return view('admin.reservations.index' , compact('data' , 'auth' ));
     }
     public function noRegistered()
     {
-        $data = Reservation::orderBy('created_at', 'desc')->where("auth" , "0")->get();
-        return view('admin.reservations.index' , compact('data'));
+        $data = Reservation::orderBy('created_at', 'desc')->whereNull("auth")->get();
+        $auth = false;
+        return view('admin.reservations.index' , compact('data' , 'auth'));
     }
 
     public function destroy(Request $request, Reservation $obj)

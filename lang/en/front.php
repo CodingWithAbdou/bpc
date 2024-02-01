@@ -49,4 +49,6 @@ return [
     "copyright" => "All rights reserved . &copy;  Copyright by Oussama Benabila." ,
     "wait" => "Wait ..." ,
     "day" => "day" ,
+    "Job Application" => "Reservation"
+
 ];

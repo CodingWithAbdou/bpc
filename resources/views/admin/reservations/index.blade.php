@@ -28,6 +28,10 @@
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="datatable">
                 <thead>
                 <tr class="text-start text-dark fw-bolder fs-7 text-uppercase gs-0">
+                    @if($auth)
+                    <th class="min-w-250px">{{__('dash.image')}}</th>
+                    <th class="min-w-250px">{{__('dash.clients')}}</th>
+                    @endif
                     <th class="min-w-250px">{{__('dash.email')}}</th>
                     <th class="min-w-250px">{{__('dash.phone')}}</th>
                     <th class="min-w-250px">{{__('dash.number_people')}}</th>
@@ -37,7 +41,21 @@
                 </thead>
                 <tbody class="fw-bold text-gray-800">
                 @foreach($data as $record)
+
                     <tr>
+                        @if($auth)
+                        @php
+                            $user = App\models\User::where('name' , $record->auth)->first()
+                        @endphp
+                        <td>
+                            <div class="symbol symbol-50px">
+                                @if($user->image)<img src="{{asset($user->image)}}" alt="" class="object-cover">@endif
+                            </div>
+                        </td>
+                        <td>
+                            {{$user->name}}
+                        </td>
+                        @endif
                         <td>
                             {{$record->email}}
                         </td>

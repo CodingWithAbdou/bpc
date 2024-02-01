@@ -32,11 +32,8 @@ class FormController extends Controller
         $inputs = $request->all();
 
         if (auth()->check()) {
-            $inputs['auth'] = 1;
-        }else {
-            $inputs['auth'] = 0;
+            $inputs['auth'] = auth()->user()->name;
         }
-
 
         $reservation = Reservation::create($inputs);
 

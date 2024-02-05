@@ -48,7 +48,7 @@ return [
     "Ok got it" => "Ok" ,
     "copyright" => "All rights reserved . &copy;  Copyright by Oussama Benabila." ,
     "wait" => "Wait ..." ,
-    "day" => "day" ,
+    "day" => "night" ,
     "Job Application" => "Reservation"
 
 ];
